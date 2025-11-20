@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqvuhxbek43wd"]
+
+[ext_resource type="Texture2D" uid="uid://d2dc5ca3d7m6h" path="res://block_E.png" id="1_d63r8"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Mur" type="Sprite2D" parent="."]
+position = Vector2(3.8146973e-06, -3)
+scale = Vector2(0.03632813, 0.030112289)
+texture = ExtResource("1_d63r8")
+offset = Vector2(0, 10)

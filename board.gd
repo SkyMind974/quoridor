@@ -3,36 +3,47 @@ extends Node2D
 const SIZE := 13
 const WallScene := preload("res://Wall.tscn")
 const INF := 1_000_000.0
-
-@onready var debug_layer = $TileMap/DebugLayer
-
-var last_dijkstra_dist := {}
-
+const DebugCellScene := preload("res://DebugCell.tscn")
 
 @onready var ground = $TileMap/TileMapLayer
 @onready var player: Node2D = $TileMap/Player
 @onready var ai: Node2D = $TileMap/IA
 @onready var walls_root: Node2D = $TileMap/Walls
+@onready var debug_root: Node2D = $TileMap/Debug
+@onready var notification_label: Label = $UI/Label
+@onready var debug_button: Button = $UI/Button
 
 enum Turn { PLAYER, AI }
 
+var rng := RandomNumberGenerator.new()
 var board_min: Vector2i
 var board_max: Vector2i
-
 var player_cell: Vector2i
 var ai_cell: Vector2i
-
 var current_turn: Turn = Turn.PLAYER
-
 var blocked: Array = []
+var last_dijkstra_dist := {}
+var debug_enabled := true
+
+
+func _show_notification(text: String):
+	notification_label.text = text
+	notification_label.visible = true
+
+
+func _hide_notification():
+	notification_label.visible = false
 
 
 func _ready():
+	debug_button.pressed.connect(_on_debug_button_pressed)
+
 	var used_rect: Rect2i = ground.get_used_rect()
 	board_min = used_rect.position
 	board_max = board_min + Vector2i(SIZE - 1, SIZE - 1)
 
 	_init_blocked()
+	rng.randomize()
 
 	player_cell = world_to_grid(player.position)
 	player_cell.x = clampi(player_cell.x, board_min.x, board_max.x)
@@ -43,6 +54,25 @@ func _ready():
 	ai_cell.y = clampi(ai_cell.y, board_min.y, board_max.y)
 
 	_update_all_positions()
+	_spawn_random_walls(20)
+
+
+func _spawn_random_walls(count: int):
+	var tries := 0
+	var placed := 0
+	var max_tries := count * 30
+
+	while placed < count and tries < max_tries:
+		tries += 1
+		var x = rng.randi_range(board_min.x, board_max.x)
+		var y = rng.randi_range(board_min.y, board_max.y)
+		var cell := Vector2i(x, y)
+
+		if cell == player_cell or cell == ai_cell:
+			continue
+
+		if _set_blocked(cell):
+			placed += 1
 
 
 func _init_blocked():
@@ -74,18 +104,30 @@ func _is_blocked(cell: Vector2i) -> bool:
 	return blocked[idx.y][idx.x]
 
 
-func _set_blocked(cell: Vector2i):
+func _set_blocked(cell: Vector2i) -> bool:
 	var idx = _index(cell)
 	if idx.x < 0 or idx.x >= SIZE or idx.y < 0 or idx.y >= SIZE:
-		return
+		_show_notification("Tu ne peux pas poser ici")
+		return false
 	if blocked[idx.y][idx.x]:
-		return
+		_show_notification("Tu ne peux pas poser ici")
+		return false
 
 	blocked[idx.y][idx.x] = true
 
-	var wall = WallScene.instantiate()
-	wall.position = grid_to_world(cell)
-	walls_root.add_child(wall)
+	var ok_ai = _has_path(ai_cell, _ai_goal_cells())
+	var ok_player = _has_path(player_cell, _player_goal_cells())
+
+	if ok_ai and ok_player:
+		var wall = WallScene.instantiate()
+		wall.position = grid_to_world(cell)
+		walls_root.add_child(wall)
+		_hide_notification()
+		return true
+
+	blocked[idx.y][idx.x] = false
+	_show_notification("Tu ne peux pas poser ici")
+	return false
 
 
 func _update_all_positions():
@@ -94,8 +136,7 @@ func _update_all_positions():
 
 
 func _in_bounds(c: Vector2i) -> bool:
-	return c.x >= board_min.x and c.x <= board_max.x \
-		and c.y >= board_min.y and c.y <= board_max.y
+	return c.x >= board_min.x and c.x <= board_max.x and c.y >= board_min.y and c.y <= board_max.y
 
 
 func _can_move(to: Vector2i) -> bool:
@@ -104,13 +145,6 @@ func _can_move(to: Vector2i) -> bool:
 	if _is_blocked(to):
 		return false
 	return true
-func _get_neighbors(c: Vector2i) -> Array[Vector2i]:
-	var res: Array[Vector2i] = []
-	for dir in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
-		var n = c + dir
-		if _can_move(n):
-			res.append(n)
-	return res
 
 
 func _get_neighbors(c: Vector2i) -> Array[Vector2i]:
@@ -129,6 +163,37 @@ func _ai_goal_cells() -> Array[Vector2i]:
 		if not _is_blocked(c):
 			res.append(c)
 	return res
+
+
+func _player_goal_cells() -> Array[Vector2i]:
+	var res: Array[Vector2i] = []
+	for x in range(board_min.x, board_max.x + 1):
+		var c = Vector2i(x, board_min.y)
+		if not _is_blocked(c):
+			res.append(c)
+	return res
+
+
+func _has_path(start: Vector2i, goals: Array[Vector2i]) -> bool:
+	if goals.is_empty():
+		return false
+
+	var visited := {}
+	var queue: Array[Vector2i] = []
+
+	visited[start] = true
+	queue.append(start)
+
+	while not queue.is_empty():
+		var u: Vector2i = queue.pop_front()
+		if goals.has(u):
+			return true
+		for v in _get_neighbors(u):
+			if not visited.has(v):
+				visited[v] = true
+				queue.append(v)
+
+	return false
 
 
 func _dijkstra_path(start: Vector2i, goals: Array[Vector2i]) -> Array[Vector2i]:
@@ -172,23 +237,34 @@ func _dijkstra_path(start: Vector2i, goals: Array[Vector2i]) -> Array[Vector2i]:
 	return path
 
 
+func _update_dijkstra_debug():
+	for child in debug_root.get_children():
+		child.queue_free()
+
+	if not debug_enabled:
+		return
+
+	for cell in last_dijkstra_dist.keys():
+		var d = DebugCellScene.instantiate()
+		d.position = grid_to_world(cell)
+		debug_root.add_child(d)
+
+
 func _unhandled_input(event):
 	if current_turn != Turn.PLAYER:
 		return
 
-	# clic gauche -> poser un mur sur la case
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		var world_pos: Vector2 = get_global_mouse_position()
 		var local = ground.to_local(world_pos)
 		var cell: Vector2i = ground.local_to_map(local)
 
-		if _in_bounds(cell) and not _is_blocked(cell) and cell != player_cell and cell != ai_cell:
-			_set_blocked(cell)
-			_update_all_positions()
-			_end_player_turn()
+		if _in_bounds(cell) and cell != player_cell and cell != ai_cell:
+			if _set_blocked(cell):
+				_update_all_positions()
+				_end_player_turn()
 		return
 
-	# ZQSD / flèches -> déplacer le joueur
 	if event is InputEventKey and event.pressed:
 		var dir := Vector2i.ZERO
 		match event.keycode:
@@ -223,6 +299,10 @@ func ai_play():
 	_end_ai_turn()
 
 
-
 func _end_ai_turn():
 	current_turn = Turn.PLAYER
+
+
+func _on_debug_button_pressed():
+	debug_enabled = not debug_enabled
+	_update_dijkstra_debug()
