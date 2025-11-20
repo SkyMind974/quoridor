@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://btq5a1h3qp2kp"]
+
+[ext_resource type="Texture2D" uid="uid://yjdur02a7yi1" path="res://kenney_isometric-blocks/PNG/Abstract tiles/abstractTile_09.png" id="1_yfgpe"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Mur" type="Sprite2D" parent="."]
+position = Vector2(0, -22)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_yfgpe")
