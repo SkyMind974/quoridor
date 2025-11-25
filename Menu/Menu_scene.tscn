@@ -1,0 +1,277 @@
+[gd_scene load_steps=14 format=4 uid="uid://d0ntdpb3g7f5f"]
+
+[ext_resource type="Script" uid="uid://x18hdi0qxmqt" path="res://Menu/menu_scene.gd" id="1_smcpk"]
+[ext_resource type="PackedScene" uid="uid://bw3kevldii35p" path="res://jeu.tscn" id="2_v3b0u"]
+[ext_resource type="TileSet" uid="uid://buxa31rpwb4wq" path="res://Map.tres" id="3_rtwur"]
+[ext_resource type="Texture2D" uid="uid://72hb8yu7vsdk" path="res://kenney_isometric-blocks/PNG/Abstract tiles/abstractTile_17.png" id="4_tgit6"]
+[ext_resource type="Script" uid="uid://5kyvj1u6qni7" path="res://script/menuwalk.gd" id="5_wnh5h"]
+[ext_resource type="Script" uid="uid://cpk25lwg7h1lm" path="res://Menu/menu_panel.gd" id="6_fmc12"]
+[ext_resource type="Texture2D" uid="uid://cihrru8bw6wbm" path="res://kenney_isometric-blocks/PNG/Voxel tiles/voxelTile_24.png" id="6_jcuqc"]
+[ext_resource type="FontFile" uid="uid://d1xah8tntvofd" path="res://Walton.otf" id="7_bo1wi"]
+[ext_resource type="Texture2D" uid="uid://d1aveuwisg1qt" path="res://Menu/clavier.png" id="8_ltt11"]
+[ext_resource type="Texture2D" uid="uid://yjdur02a7yi1" path="res://kenney_isometric-blocks/PNG/Abstract tiles/abstractTile_09.png" id="9_obx4k"]
+
+[sub_resource type="Gradient" id="Gradient_v3b0u"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.592157)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h4dl8"]
+gradient = SubResource("Gradient_v3b0u")
+
+[sub_resource type="LabelSettings" id="LabelSettings_l7ps2"]
+font = ExtResource("7_bo1wi")
+font_size = 44
+
+[node name="MenuScene" type="Node2D"]
+script = ExtResource("1_smcpk")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1, 414)
+zoom = Vector2(0.5, 0.5)
+
+[node name="TileMap" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="TileMapLayer3" type="TileMapLayer" parent="TileMap"]
+tile_map_data = PackedByteArray("AAABAAIAAwAJAAIAAAABAAMAAwAJAAIAAAABAAQAAwAJAAIAAAABAAUAAwAJAAIAAAABAAYAAwAJAAIAAAABAAcAAwAJAAIAAAABAAgAAwAJAAIAAAABAAkAAwAJAAIAAAABAAoAAwAJAAIAAAABAAsAAwAJAAIAAAABAAwAAwAJAAIAAAABAA0AAwAJAAIAAAACAAIAAwAJAAIAAAACAAMAAwAJAAIAAAACAAQAAwAJAAIAAAACAAUAAwAJAAIAAAACAAYAAwAJAAIAAAACAAcAAwAJAAIAAAACAAgAAwAJAAIAAAACAAkAAwAJAAIAAAACAAoAAwAJAAIAAAACAAsAAwAJAAIAAAACAAwAAwAJAAIAAAACAA0AAwAJAAIAAAADAAIAAwAJAAIAAAADAAMAAwAJAAIAAAADAAQAAwAJAAIAAAADAAUAAwAJAAIAAAADAAYAAwAJAAIAAAADAAcAAwAJAAIAAAADAAgAAwAJAAIAAAADAAkAAwAJAAIAAAADAAoAAwAJAAIAAAADAAsAAwAJAAIAAAADAAwAAwAJAAIAAAADAA0AAwAJAAIAAAAEAAIAAwAJAAIAAAAEAAMAAwAJAAIAAAAEAAQAAwAJAAIAAAAEAAUAAwAJAAIAAAAEAAYAAwAJAAIAAAAEAAcAAwAJAAIAAAAEAAgAAwAJAAIAAAAEAAkAAwAJAAIAAAAEAAoAAwAJAAIAAAAEAAsAAwAJAAIAAAAEAAwAAwAJAAIAAAAEAA0AAwAJAAIAAAAFAAIAAwAJAAIAAAAFAAMAAwAJAAIAAAAFAAQAAwAJAAIAAAAFAAUAAwAJAAIAAAAFAAYAAwAJAAIAAAAFAAcAAwAJAAIAAAAFAAgAAwAJAAIAAAAFAAkAAwAJAAIAAAAFAAoAAwAJAAIAAAAFAAsAAwAJAAIAAAAFAAwAAwAJAAIAAAAFAA0AAwAJAAIAAAAGAAIAAwAJAAIAAAAGAAMAAwAJAAIAAAAGAAQAAwAJAAIAAAAGAAUAAwAJAAIAAAAGAAYAAwAJAAIAAAAGAAcAAwAJAAIAAAAGAAgAAwAJAAIAAAAGAAkAAwAJAAIAAAAGAAoAAwAJAAIAAAAGAAsAAwAJAAIAAAAGAAwAAwAJAAIAAAAGAA0AAwAJAAIAAAAHAAIAAwAJAAIAAAAHAAMAAwAJAAIAAAAHAAQAAwAJAAIAAAAHAAUAAwAJAAIAAAAHAAYAAwAJAAIAAAAHAAcAAwAJAAIAAAAHAAgAAwAJAAIAAAAHAAkAAwAJAAIAAAAHAAoAAwAJAAIAAAAHAAsAAwAJAAIAAAAHAAwAAwAJAAIAAAAHAA0AAwAJAAIAAAAIAAIAAwAJAAIAAAAIAAMAAwAJAAIAAAAIAAQAAwAJAAIAAAAIAAUAAwAJAAIAAAAIAAYAAwAJAAIAAAAIAAcAAwAJAAIAAAAIAAgAAwAJAAIAAAAIAAkAAwAJAAIAAAAIAAoAAwAJAAIAAAAIAAsAAwAJAAIAAAAIAAwAAwAJAAIAAAAIAA0AAwAJAAIAAAAJAAIAAwAJAAIAAAAJAAMAAwAJAAIAAAAJAAQAAwAJAAIAAAAJAAUAAwAJAAIAAAAJAAYAAwAJAAIAAAAJAAcAAwAJAAIAAAAJAAgAAwAJAAIAAAAJAAkAAwAJAAIAAAAJAAoAAwAJAAIAAAAJAAsAAwAJAAIAAAAJAAwAAwAJAAIAAAAJAA0AAwAJAAIAAAAKAAIAAwAJAAIAAAAKAAMAAwAJAAIAAAAKAAQAAwAJAAIAAAAKAAUAAwAJAAIAAAAKAAYAAwAJAAIAAAAKAAcAAwAJAAIAAAAKAAgAAwAJAAIAAAAKAAkAAwAJAAIAAAAKAAoAAwAJAAIAAAAKAAsAAwAJAAIAAAAKAAwAAwAJAAIAAAAKAA0AAwAJAAIAAAALAAIAAwAJAAIAAAALAAMAAwAJAAIAAAALAAQAAwAJAAIAAAALAAUAAwAJAAIAAAALAAYAAwAJAAIAAAALAAcAAwAJAAIAAAALAAgAAwAJAAIAAAALAAkAAwAJAAIAAAALAAoAAwAJAAIAAAALAAsAAwAJAAIAAAALAAwAAwAJAAIAAAALAA0AAwAJAAIAAAAMAAIAAwAJAAIAAAAMAAMAAwAJAAIAAAAMAAQAAwAJAAIAAAAMAAUAAwAJAAIAAAAMAAYAAwAJAAIAAAAMAAcAAwAJAAIAAAAMAAgAAwAJAAIAAAAMAAkAAwAJAAIAAAAMAAoAAwAJAAIAAAAMAAsAAwAJAAIAAAAMAAwAAwAJAAIAAAAMAA0AAwAJAAIAAAABAAEAAwAJAAIAAAACAAEAAwAJAAIAAAADAAEAAwAJAAIAAAAEAAEAAwAJAAIAAAAFAAEAAwAJAAIAAAAGAAEAAwAJAAIAAAAHAAEAAwAJAAIAAAAIAAEAAwAJAAIAAAAJAAEAAwAJAAIAAAAKAAEAAwAJAAIAAAALAAEAAwAJAAIAAAAMAAEAAwAJAAIAAAANAAEAAwAJAAIAAAANAAIAAwAJAAIAAAANAAMAAwAJAAIAAAANAAQAAwAJAAIAAAANAAUAAwAJAAIAAAANAAYAAwAJAAIAAAANAAcAAwAJAAIAAAANAAgAAwAJAAIAAAANAAkAAwAJAAIAAAANAAoAAwAJAAIAAAANAAsAAwAJAAIAAAANAAwAAwAJAAIAAAANAA0AAwAJAAIAAAA=")
+tile_set = ExtResource("3_rtwur")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="TileMap"]
+tile_map_data = PackedByteArray("AAAAAAEAAwAIAAIAAAAAAAIAAwAIAAIAAAAAAAMAAwAIAAIAAAAAAAQAAwAIAAIAAAAAAAUAAwAIAAIAAAAAAAYAAwAJAAIAAAAAAAcAAwAHAAIAAAAAAAgAAwAHAAIAAAAAAAkAAwAHAAIAAAAAAAoAAwAHAAIAAAAAAAsAAwAHAAIAAAAAAAwAAwAHAAIAAAABAAEAAwAIAAIAAAABAAIAAwAIAAIAAAABAAMAAwAIAAIAAAABAAQAAwAIAAIAAAABAAUAAwAIAAIAAAABAAYAAwAJAAIAAAABAAcAAwAHAAIAAAABAAgAAwAHAAIAAAABAAkAAwAHAAIAAAABAAoAAwAHAAIAAAABAAsAAwAHAAIAAAABAAwAAwAHAAIAAAACAAEAAwAIAAIAAAACAAIAAwAIAAIAAAACAAMAAwAIAAIAAAACAAQAAwAIAAIAAAACAAUAAwAIAAIAAAACAAYAAwAJAAIAAAACAAcAAwAHAAIAAAACAAgAAwAHAAIAAAACAAkAAwAHAAIAAAACAAoAAwAHAAIAAAACAAsAAwAHAAIAAAACAAwAAwAHAAIAAAADAAEAAwAIAAIAAAADAAIAAwAIAAIAAAADAAMAAwAIAAIAAAADAAQAAwAIAAIAAAADAAUAAwAIAAIAAAADAAYAAwAJAAIAAAADAAcAAwAHAAIAAAADAAgAAwAHAAIAAAADAAkAAwAHAAIAAAADAAsAAwAHAAIAAAADAAwAAwAHAAIAAAAEAAEAAwAIAAIAAAAEAAIAAwAIAAIAAAAEAAMAAwAIAAIAAAAEAAQAAwAIAAIAAAAEAAUAAwAIAAIAAAAEAAYAAwAJAAIAAAAEAAcAAwAHAAIAAAAEAAgAAwAHAAIAAAAEAAkAAwAHAAIAAAAEAAoAAwAHAAIAAAAEAAsAAwAHAAIAAAAEAAwAAwAHAAIAAAAFAAEAAwAIAAIAAAAFAAIAAwAIAAIAAAAFAAMAAwAIAAIAAAAFAAQAAwAIAAIAAAAFAAUAAwAIAAIAAAAFAAYAAwAJAAIAAAAFAAcAAwAHAAIAAAAFAAgAAwAHAAIAAAAFAAkAAwAHAAIAAAAFAAoAAwAHAAIAAAAFAAsAAwAHAAIAAAAFAAwAAwAHAAIAAAAGAAEAAwAIAAIAAAAGAAIAAwAIAAIAAAAGAAMAAwAIAAIAAAAGAAQAAwAIAAIAAAAGAAUAAwAIAAIAAAAGAAYAAwAJAAIAAAAGAAcAAwAHAAIAAAAGAAgAAwAHAAIAAAAGAAkAAwAHAAIAAAAGAAoAAwAHAAIAAAAGAAsAAwAHAAIAAAAGAAwAAwAHAAIAAAAHAAEAAwAIAAIAAAAHAAIAAwAIAAIAAAAHAAMAAwAIAAIAAAAHAAQAAwAIAAIAAAAHAAUAAwAIAAIAAAAHAAYAAwAJAAIAAAAHAAcAAwAHAAIAAAAHAAgAAwAHAAIAAAAHAAkAAwAHAAIAAAAHAAoAAwAHAAIAAAAHAAsAAwAHAAIAAAAHAAwAAwAHAAIAAAAIAAEAAwAIAAIAAAAIAAIAAwAIAAIAAAAIAAMAAwAIAAIAAAAIAAQAAwAIAAIAAAAIAAUAAwAIAAIAAAAIAAYAAwAJAAIAAAAIAAcAAwAHAAIAAAAIAAgAAwAHAAIAAAAIAAkAAwAHAAIAAAAIAAoAAwAHAAIAAAAIAAsAAwAHAAIAAAAIAAwAAwAHAAIAAAAJAAEAAwAIAAIAAAAJAAIAAwAIAAIAAAAJAAMAAwAIAAIAAAAJAAQAAwAIAAIAAAAJAAUAAwAIAAIAAAAJAAYAAwAJAAIAAAAJAAcAAwAHAAIAAAAJAAgAAwAHAAIAAAAJAAkAAwAHAAIAAAAJAAoAAwAHAAIAAAAJAAsAAwAHAAIAAAAJAAwAAwAHAAIAAAAKAAEAAwAIAAIAAAAKAAIAAwAIAAIAAAAKAAMAAwAIAAIAAAAKAAQAAwAIAAIAAAAKAAUAAwAIAAIAAAAKAAYAAwAJAAIAAAAKAAcAAwAHAAIAAAAKAAgAAwAHAAIAAAAKAAkAAwAHAAIAAAAKAAoAAwAHAAIAAAAKAAsAAwAHAAIAAAAKAAwAAwAHAAIAAAAAAAAAAwAIAAIAAAABAAAAAwAIAAIAAAACAAAAAwAIAAIAAAADAAAAAwAIAAIAAAAEAAAAAwAIAAIAAAAFAAAAAwAIAAIAAAAGAAAAAwAIAAIAAAAHAAAAAwAIAAIAAAAIAAAAAwAIAAIAAAAJAAAAAwAIAAIAAAAKAAAAAwAIAAIAAAAMAAAAAwAIAAIAAAAMAAEAAwAIAAIAAAAMAAIAAwAIAAIAAAAMAAMAAwAIAAIAAAAMAAQAAwAIAAIAAAAMAAUAAwAIAAIAAAAMAAYAAwAJAAIAAAAMAAcAAwAHAAIAAAAMAAgAAwAHAAIAAAAMAAkAAwAHAAIAAAAMAAoAAwAHAAIAAAAMAAsAAwAHAAIAAAAMAAwAAwAHAAIAAAALAAAAAwAIAAIAAAALAAEAAwAIAAIAAAALAAIAAwAIAAIAAAALAAMAAwAIAAIAAAALAAQAAwAIAAIAAAALAAUAAwAIAAIAAAALAAYAAwAJAAIAAAALAAcAAwAHAAIAAAALAAgAAwAHAAIAAAALAAkAAwAHAAIAAAALAAoAAwAHAAIAAAALAAsAAwAHAAIAAAALAAwAAwAHAAIAAAADAAoAAwAHAAIAAAA=")
+tile_set = ExtResource("3_rtwur")
+
+[node name="Debug" type="Node2D" parent="TileMap"]
+y_sort_enabled = true
+
+[node name="Walls" type="Node2D" parent="TileMap"]
+y_sort_enabled = true
+
+[node name="DijkstraAgent" type="Sprite2D" parent="TileMap"]
+y_sort_enabled = true
+position = Vector2(388, 216)
+scale = Vector2(0.70045, 0.644531)
+texture = ExtResource("4_tgit6")
+offset = Vector2(0, -25.285)
+script = ExtResource("5_wnh5h")
+mode = "dijkstra"
+
+[node name="AStarAgent" type="Sprite2D" parent="TileMap"]
+y_sort_enabled = true
+position = Vector2(-276, 605)
+scale = Vector2(0.70045, 0.644531)
+texture = ExtResource("6_jcuqc")
+offset = Vector2(0, -25.285)
+script = ExtResource("5_wnh5h")
+mode = "astar"
+
+[node name="MenuPanel" type="TextureRect" parent="." node_paths=PackedStringArray("main_panel", "mode_panel", "help_panel")]
+z_index = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -372.0
+offset_right = 86.0
+offset_bottom = 446.0
+grow_horizontal = 2
+scale = Vector2(1.62781, 1.54127)
+texture = SubResource("GradientTexture1D_h4dl8")
+script = ExtResource("6_fmc12")
+game_scene = ExtResource("2_v3b0u")
+main_panel = NodePath(".")
+mode_panel = NodePath("../ModePanel")
+help_panel = NodePath("../HelpPanel")
+
+[node name="Label" type="Label" parent="MenuPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -105.5
+offset_top = 31.0
+offset_right = 105.5
+offset_bottom = 76.0
+grow_horizontal = 2
+text = "DIJKSTRA*"
+label_settings = SubResource("LabelSettings_l7ps2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.0
+offset_top = -114.5
+offset_right = 153.0
+offset_bottom = 114.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="MenuPanel/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="Aide" type="Button" parent="MenuPanel/VBoxContainer"]
+layout_mode = 2
+text = "Aide"
+
+[node name="Quitter" type="Button" parent="MenuPanel/VBoxContainer"]
+layout_mode = 2
+text = "Quitter"
+
+[node name="ModePanel" type="TextureRect" parent="."]
+z_index = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -372.0
+offset_right = 86.0
+offset_bottom = 446.0
+grow_horizontal = 2
+scale = Vector2(1.62781, 1.54127)
+texture = SubResource("GradientTexture1D_h4dl8")
+
+[node name="Label2" type="Label" parent="ModePanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -149.0
+offset_top = 31.0
+offset_right = 165.0
+offset_bottom = 76.0
+grow_horizontal = 2
+text = "Mode de Jeux"
+label_settings = SubResource("LabelSettings_l7ps2")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ModePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.0
+offset_top = -114.0
+offset_right = 153.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BtnDijkstra" type="Button" parent="ModePanel/VBoxContainer2"]
+layout_mode = 2
+text = "Dijkstra"
+
+[node name="BtnAStar" type="Button" parent="ModePanel/VBoxContainer2"]
+layout_mode = 2
+text = "A*"
+
+[node name="BtnRetour" type="Button" parent="ModePanel/VBoxContainer2"]
+layout_mode = 2
+text = "Retour"
+
+[node name="HelpPanel" type="TextureRect" parent="."]
+z_index = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -372.0
+offset_right = 86.0
+offset_bottom = 446.0
+grow_horizontal = 2
+scale = Vector2(1.62781, 1.54127)
+texture = SubResource("GradientTexture1D_h4dl8")
+
+[node name="Label2" type="Label" parent="HelpPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.5
+offset_top = 45.0
+offset_right = 48.5
+offset_bottom = 90.0
+grow_horizontal = 2
+text = "Aide"
+label_settings = SubResource("LabelSettings_l7ps2")
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="HelpPanel"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 229.0
+offset_right = 422.0
+offset_bottom = 314.0
+
+[node name="BoxContainer" type="HBoxContainer" parent="HelpPanel/GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HelpPanel/GridContainer/BoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_ltt11")
+expand_mode = 3
+
+[node name="Label2" type="Label" parent="HelpPanel/GridContainer/BoxContainer"]
+layout_mode = 2
+text = "Déplacer vous avec les flèches directionnelles"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HelpPanel/GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HelpPanel/GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_obx4k")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="HelpPanel/GridContainer/HBoxContainer"]
+layout_mode = 2
+text = "Poser des cubes en cliquant sur les cases"
+
+[node name="BtnRetour" type="Button" parent="HelpPanel/GridContainer"]
+layout_mode = 2
+text = "Retour"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -1148.0
+offset_top = -233.0
+offset_right = -1083.0
+offset_bottom = -210.0
+scale = Vector2(1.59335, 1.59335)
+text = "Dijkstra:"
+
+[node name="Score1" type="Label" parent="."]
+offset_left = -1044.0
+offset_top = -233.0
+offset_right = -1004.0
+offset_bottom = -210.0
+scale = Vector2(1.59335, 1.59335)
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -1148.0
+offset_top = -196.0
+offset_right = -1108.0
+offset_bottom = -173.0
+scale = Vector2(1.59335, 1.59335)
+text = "A*:"
+
+[node name="Score2" type="Label" parent="."]
+offset_left = -1108.0
+offset_top = -196.0
+offset_right = -1068.0
+offset_bottom = -173.0
+scale = Vector2(1.59335, 1.59335)
+
+[connection signal="pressed" from="MenuPanel/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MenuPanel/VBoxContainer/Play" to="MenuPanel" method="_on_play_pressed"]
+[connection signal="pressed" from="MenuPanel/VBoxContainer/Aide" to="MenuPanel" method="_on_aide_pressed"]
+[connection signal="pressed" from="MenuPanel/VBoxContainer/Quitter" to="." method="_on_quitter_pressed"]
+[connection signal="pressed" from="MenuPanel/VBoxContainer/Quitter" to="MenuPanel" method="_on_quitter_pressed"]
+[connection signal="pressed" from="ModePanel/VBoxContainer2/BtnDijkstra" to="." method="_on_btn_dijkstra_pressed"]
+[connection signal="pressed" from="ModePanel/VBoxContainer2/BtnDijkstra" to="MenuPanel" method="_on_btn_dijkstra_pressed"]
+[connection signal="pressed" from="ModePanel/VBoxContainer2/BtnAStar" to="." method="_on_btn_a_star_pressed"]
+[connection signal="pressed" from="ModePanel/VBoxContainer2/BtnAStar" to="MenuPanel" method="_on_btn_a_star_pressed"]
+[connection signal="pressed" from="ModePanel/VBoxContainer2/BtnRetour" to="." method="_on_btn_retour_pressed"]
+[connection signal="pressed" from="ModePanel/VBoxContainer2/BtnRetour" to="MenuPanel" method="_on_btn_retour_pressed"]
+[connection signal="pressed" from="HelpPanel/GridContainer/BtnRetour" to="." method="_on_btn_retour_pressed"]
+[connection signal="pressed" from="HelpPanel/GridContainer/BtnRetour" to="MenuPanel" method="_on_btn_retour_pressed"]
