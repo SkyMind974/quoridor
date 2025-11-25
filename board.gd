@@ -2,19 +2,30 @@ extends Node2D
 
 const SIZE := 13
 const WallScene := preload("res://Wall.tscn")
-const INF := 1_000_000.0
 const DebugCellScene := preload("res://DebugCell.tscn")
+const INF := 1_000_000.0
 
 @onready var ground = $TileMap/TileMapLayer
 @onready var player: Node2D = $TileMap/Player
 @onready var ai: Node2D = $TileMap/IA
 @onready var walls_root: Node2D = $TileMap/Walls
 @onready var debug_root: Node2D = $TileMap/Debug
-@onready var notification_label: Label = $UI/Label
+
+@onready var notification_panel: TextureRect = $UI/TextureRect
+@onready var notification_label: Label = $UI/TextureRect/Label
 @onready var debug_button: Button = $UI/Button
+
+@onready var back: TextureRect =  $UI/Fond
+
+@onready var victory_panel: TextureRect = $UI/Victoire
+@onready var victory_label: Label = $UI/Victoire/Label
+
+@onready var defeat_panel: TextureRect = $UI/Defaite
+@onready var defeat_label: Label =  $UI/Defaite/Label
 
 enum Turn { PLAYER, AI }
 
+var notif_version := 0
 var rng := RandomNumberGenerator.new()
 var board_min: Vector2i
 var board_max: Vector2i
@@ -24,19 +35,49 @@ var current_turn: Turn = Turn.PLAYER
 var blocked: Array = []
 var last_dijkstra_dist := {}
 var debug_enabled := true
+var game_over := false
 
 
-func _show_notification(text: String):
+func _show_notification(text: String) -> void:
+	notif_version += 1
+	var my_version := notif_version
+
 	notification_label.text = text
+	notification_panel.visible = true
 	notification_label.visible = true
+	notification_panel.modulate.a = 1.0
+
+	var timer := get_tree().create_timer(1.2)
+	await timer.timeout
+	if my_version != notif_version:
+		return
+
+	var tween := create_tween()
+	tween.tween_property(notification_panel, "modulate:a", 0.0, 0.5)
+	await tween.finished
+	if my_version == notif_version:
+		_hide_notification()
 
 
-func _hide_notification():
+func _hide_notification() -> void:
+	notification_panel.visible = false
 	notification_label.visible = false
+	notification_panel.modulate.a = 1.0
 
 
 func _ready():
+	notification_panel.visible = false
+	notification_label.visible = false
+	notification_panel.modulate.a = 1.0
+
+	victory_panel.visible = false
+	victory_label.visible = false
+	defeat_label.visible = false
+	defeat_panel.visible = false
+	back.visible = false
+	
 	debug_button.pressed.connect(_on_debug_button_pressed)
+
 
 	var used_rect: Rect2i = ground.get_used_rect()
 	board_min = used_rect.position
@@ -71,7 +112,7 @@ func _spawn_random_walls(count: int):
 		if cell == player_cell or cell == ai_cell:
 			continue
 
-		if _set_blocked(cell):
+		if _set_blocked(cell, false):
 			placed += 1
 
 
@@ -104,13 +145,15 @@ func _is_blocked(cell: Vector2i) -> bool:
 	return blocked[idx.y][idx.x]
 
 
-func _set_blocked(cell: Vector2i) -> bool:
+func _set_blocked(cell: Vector2i, show_notif := true) -> bool:
 	var idx = _index(cell)
 	if idx.x < 0 or idx.x >= SIZE or idx.y < 0 or idx.y >= SIZE:
-		_show_notification("Tu ne peux pas poser ici")
+		if show_notif:
+			_show_notification("Tu ne peux pas poser de mur ici")
 		return false
 	if blocked[idx.y][idx.x]:
-		_show_notification("Tu ne peux pas poser ici")
+		if show_notif:
+			_show_notification("Tu ne peux pas poser de mur ici")
 		return false
 
 	blocked[idx.y][idx.x] = true
@@ -122,11 +165,13 @@ func _set_blocked(cell: Vector2i) -> bool:
 		var wall = WallScene.instantiate()
 		wall.position = grid_to_world(cell)
 		walls_root.add_child(wall)
-		_hide_notification()
+		if show_notif:
+			_hide_notification()
 		return true
 
 	blocked[idx.y][idx.x] = false
-	_show_notification("Tu ne peux pas poser ici")
+	if show_notif:
+		_show_notification("Tu ne peux pas poser ici")
 	return false
 
 
@@ -196,7 +241,7 @@ func _has_path(start: Vector2i, goals: Array[Vector2i]) -> bool:
 	return false
 
 
-func _dijkstra_path(start: Vector2i, goals: Array[Vector2i]) -> Array[Vector2i]:
+func _dijkstra_path(start: Vector2i, goals: Array[Vector2i], debug := true) -> Array[Vector2i]:
 	var dist := {}
 	var prev := {}
 	var q: Array[Vector2i] = []
@@ -222,8 +267,9 @@ func _dijkstra_path(start: Vector2i, goals: Array[Vector2i]) -> Array[Vector2i]:
 				if not q.has(v):
 					q.append(v)
 
-	last_dijkstra_dist = dist
-	_update_dijkstra_debug()
+	if debug:
+		last_dijkstra_dist = dist
+		_update_dijkstra_debug()
 
 	if not found:
 		return []
@@ -251,6 +297,8 @@ func _update_dijkstra_debug():
 
 
 func _unhandled_input(event):
+	if game_over:
+		return
 	if current_turn != Turn.PLAYER:
 		return
 
@@ -260,7 +308,7 @@ func _unhandled_input(event):
 		var cell: Vector2i = ground.local_to_map(local)
 
 		if _in_bounds(cell) and cell != player_cell and cell != ai_cell:
-			if _set_blocked(cell):
+			if _set_blocked(cell, true):
 				_update_all_positions()
 				_end_player_turn()
 		return
@@ -285,21 +333,73 @@ func _unhandled_input(event):
 				_end_player_turn()
 
 
+func _check_victory() -> bool:
+	if player_cell.y == board_min.y:
+		_show_victory(true)
+		return true
+	if ai_cell.y == board_max.y:
+		_show_victory(false)
+		return true
+	return false
+
+
+func _show_victory(player_won: bool) -> void:
+	game_over = true
+	back.visible = true
+	if player_won:
+		victory_panel.visible = true
+		victory_label.visible = true
+	else:
+		defeat_panel.visible = true
+		defeat_label.visible = true
+
+
 func _end_player_turn():
+	if _check_victory():
+		return
 	current_turn = Turn.AI
 	ai_play()
 
 
 func ai_play():
-	var goals = _ai_goal_cells()
-	var path = _dijkstra_path(ai_cell, goals)
-	if path.size() > 1:
-		ai_cell = path[1]
+	if game_over:
+		return
+
+	var ai_goals = _ai_goal_cells()
+	var ai_path = _dijkstra_path(ai_cell, ai_goals, debug_enabled)
+
+	var player_goals = _player_goal_cells()
+	var player_path = _dijkstra_path(player_cell, player_goals, false)
+
+	var placed_wall := false
+
+	if player_path.size() > 1 and ai_path.size() > 0 and player_path.size() <= ai_path.size():
+		var max_check: int = min(player_path.size(), 5)
+		for i in range(1, max_check):
+			var c: Vector2i = player_path[i]
+			if c == ai_cell or c == player_cell:
+				continue
+			if _is_blocked(c):
+				continue
+			if _set_blocked(c, false):
+				placed_wall = true
+				break
+
+	if placed_wall:
+		_update_all_positions()
+		_end_ai_turn()
+		return
+
+	if ai_path.size() > 1:
+		ai_cell = ai_path[1]
+
 	_update_all_positions()
 	_end_ai_turn()
 
 
 func _end_ai_turn():
+	if _check_victory():
+		return
 	current_turn = Turn.PLAYER
 
 

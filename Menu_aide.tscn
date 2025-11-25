@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://27e8bf2dan21"]
+
+[ext_resource type="Texture2D" uid="uid://d1aveuwisg1qt" path="res://Menu/clavier.png" id="1_4i3ai"]
+[ext_resource type="Texture2D" uid="uid://yjdur02a7yi1" path="res://kenney_isometric-blocks/PNG/Abstract tiles/abstractTile_09.png" id="2_2uqfl"]
+
+[node name="MenuAide" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 539.0
+offset_top = 216.0
+offset_right = 579.0
+offset_bottom = 256.0
+
+[node name="BoxContainer" type="HBoxContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/BoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_4i3ai")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="GridContainer/BoxContainer"]
+layout_mode = 2
+text = "Poser des cubes en cliquant sur les cases"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_2uqfl")
+expand_mode = 3
+
+[node name="Label2" type="Label" parent="GridContainer/HBoxContainer"]
+layout_mode = 2
+text = "Déplacer vous avec les flèches directionnelles"
