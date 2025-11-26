@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://bw3kevldii35p"]
+[gd_scene load_steps=25 format=4 uid="uid://bw3kevldii35p"]
 
 [ext_resource type="TileSet" uid="uid://buxa31rpwb4wq" path="res://Map.tres" id="1_bc8hh"]
 [ext_resource type="Script" uid="uid://x3r25swvgkba" path="res://board.gd" id="1_h8l20"]
@@ -12,19 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dcpncmvj0g7hv" path="res://kenney_isometric-blocks/PNG/Abstract tiles/abstractTile_08.png" id="7_v5usu"]
 [ext_resource type="Texture2D" uid="uid://d1aveuwisg1qt" path="res://Menu/clavier.png" id="10_o5b5a"]
 [ext_resource type="Script" uid="uid://c0l0gqe3ry5uh" path="res://menu_echap.gd" id="10_poe8c"]
-[ext_resource type="PackedScene" uid="uid://d0ntdpb3g7f5f" path="res://Menu/Menu_scene.tscn" id="11_8qsxd"]
 [ext_resource type="Texture2D" uid="uid://yjdur02a7yi1" path="res://kenney_isometric-blocks/PNG/Abstract tiles/abstractTile_09.png" id="11_poe8c"]
-
-[sub_resource type="Gradient" id="Gradient_lhrck"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 0, 0, 0.592157)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_8qsxd"]
-gradient = SubResource("Gradient_lhrck")
-
-[sub_resource type="LabelSettings" id="LabelSettings_v5usu"]
-font = ExtResource("6_aw23n")
-font_size = 44
 
 [sub_resource type="Gradient" id="Gradient_8qsxd"]
 offsets = PackedFloat32Array(0)
@@ -34,6 +22,17 @@ colors = PackedColorArray(0, 0, 0, 0.592157)
 gradient = SubResource("Gradient_8qsxd")
 
 [sub_resource type="LabelSettings" id="LabelSettings_swlgb"]
+font = ExtResource("6_aw23n")
+font_size = 44
+
+[sub_resource type="Gradient" id="Gradient_v3b0u"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.592157)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8qsxd"]
+gradient = SubResource("Gradient_v3b0u")
+
+[sub_resource type="LabelSettings" id="LabelSettings_v5usu"]
 font = ExtResource("6_aw23n")
 font_size = 44
 
@@ -76,7 +75,7 @@ tile_set = ExtResource("1_bc8hh")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="TileMap"]
 position = Vector2(-53, 11)
-tile_map_data = PackedByteArray("AAAAAAEAAwAIAAIAAAAAAAIAAwAIAAIAAAAAAAMAAwAIAAIAAAAAAAQAAwAIAAIAAAAAAAUAAwAIAAIAAAAAAAYAAwAJAAIAAAAAAAcAAwAHAAIAAAAAAAgAAwAHAAIAAAAAAAkAAwAHAAIAAAAAAAoAAwAHAAIAAAAAAAsAAwAHAAIAAAAAAAwAAwAHAAIAAAABAAEAAwAIAAIAAAABAAIAAwAIAAIAAAABAAMAAwAIAAIAAAABAAQAAwAIAAIAAAABAAUAAwAIAAIAAAABAAYAAwAJAAIAAAABAAcAAwAHAAIAAAABAAgAAwAHAAIAAAABAAkAAwAHAAIAAAABAAoAAwAHAAIAAAABAAsAAwAHAAIAAAABAAwAAwAHAAIAAAACAAEAAwAIAAIAAAACAAIAAwAIAAIAAAACAAMAAwAIAAIAAAACAAQAAwAIAAIAAAACAAUAAwAIAAIAAAACAAYAAwAJAAIAAAACAAcAAwAHAAIAAAACAAgAAwAHAAIAAAACAAkAAwAHAAIAAAACAAoAAwAHAAIAAAACAAsAAwAHAAIAAAACAAwAAwAHAAIAAAADAAEAAwAIAAIAAAADAAIAAwAIAAIAAAADAAMAAwAIAAIAAAADAAQAAwAIAAIAAAADAAUAAwAIAAIAAAADAAYAAwAJAAIAAAADAAcAAwAHAAIAAAADAAgAAwAHAAIAAAADAAkAAwAHAAIAAAADAAsAAwAHAAIAAAADAAwAAwAHAAIAAAAEAAEAAwAIAAIAAAAEAAIAAwAIAAIAAAAEAAMAAwAIAAIAAAAEAAQAAwAIAAIAAAAEAAUAAwAIAAIAAAAEAAYAAwAJAAIAAAAEAAcAAwAHAAIAAAAEAAgAAwAHAAIAAAAEAAkAAwAHAAIAAAAEAAoAAwAHAAIAAAAEAAsAAwAHAAIAAAAEAAwAAwAHAAIAAAAFAAEAAwAIAAIAAAAFAAIAAwAIAAIAAAAFAAMAAwAIAAIAAAAFAAQAAwAIAAIAAAAFAAUAAwAIAAIAAAAFAAYAAwAJAAIAAAAFAAcAAwAHAAIAAAAFAAgAAwAHAAIAAAAFAAkAAwAHAAIAAAAFAAoAAwAHAAIAAAAFAAsAAwAHAAIAAAAFAAwAAwAHAAIAAAAGAAEAAwAIAAIAAAAGAAIAAwAIAAIAAAAGAAMAAwAIAAIAAAAGAAQAAwAIAAIAAAAGAAUAAwAIAAIAAAAGAAYAAwAJAAIAAAAGAAcAAwAHAAIAAAAGAAgAAwAHAAIAAAAGAAkAAwAHAAIAAAAGAAoAAwAHAAIAAAAGAAsAAwAHAAIAAAAGAAwAAwAHAAIAAAAHAAEAAwAIAAIAAAAHAAIAAwAIAAIAAAAHAAMAAwAIAAIAAAAHAAQAAwAIAAIAAAAHAAUAAwAIAAIAAAAHAAYAAwAJAAIAAAAHAAcAAwAHAAIAAAAHAAgAAwAHAAIAAAAHAAkAAwAHAAIAAAAHAAoAAwAHAAIAAAAHAAsAAwAHAAIAAAAHAAwAAwAHAAIAAAAIAAEAAwAIAAIAAAAIAAIAAwAIAAIAAAAIAAMAAwAIAAIAAAAIAAQAAwAIAAIAAAAIAAUAAwAIAAIAAAAIAAYAAwAJAAIAAAAIAAcAAwAHAAIAAAAIAAgAAwAHAAIAAAAIAAkAAwAHAAIAAAAIAAoAAwAHAAIAAAAIAAsAAwAHAAIAAAAIAAwAAwAHAAIAAAAJAAEAAwAIAAIAAAAJAAIAAwAIAAIAAAAJAAMAAwAIAAIAAAAJAAQAAwAIAAIAAAAJAAUAAwAIAAIAAAAJAAYAAwAJAAIAAAAJAAcAAwAHAAIAAAAJAAgAAwAHAAIAAAAJAAkAAwAHAAIAAAAJAAoAAwAHAAIAAAAJAAsAAwAHAAIAAAAJAAwAAwAHAAIAAAAKAAEAAwAIAAIAAAAKAAIAAwAIAAIAAAAKAAMAAwAIAAIAAAAKAAQAAwAIAAIAAAAKAAUAAwAIAAIAAAAKAAYAAwAJAAIAAAAKAAcAAwAHAAIAAAAKAAgAAwAHAAIAAAAKAAkAAwAHAAIAAAAKAAoAAwAHAAIAAAAKAAsAAwAHAAIAAAAKAAwAAwAHAAIAAAAAAAAAAwAIAAIAAAABAAAAAwAIAAIAAAACAAAAAwAIAAIAAAADAAAAAwAIAAIAAAAEAAAAAwAIAAIAAAAFAAAAAwAIAAIAAAAGAAAAAwAIAAIAAAAHAAAAAwAIAAIAAAAIAAAAAwAIAAIAAAAJAAAAAwAIAAIAAAAKAAAAAwAIAAIAAAAMAAAAAwAIAAIAAAAMAAEAAwAIAAIAAAAMAAIAAwAIAAIAAAAMAAMAAwAIAAIAAAAMAAQAAwAIAAIAAAAMAAUAAwAIAAIAAAAMAAYAAwAJAAIAAAAMAAcAAwAHAAIAAAAMAAgAAwAHAAIAAAAMAAkAAwAHAAIAAAAMAAoAAwAHAAIAAAAMAAsAAwAHAAIAAAAMAAwAAwAHAAIAAAALAAAAAwAIAAIAAAALAAEAAwAIAAIAAAALAAIAAwAIAAIAAAALAAMAAwAIAAIAAAALAAQAAwAIAAIAAAALAAUAAwAIAAIAAAALAAYAAwAJAAIAAAALAAcAAwAHAAIAAAALAAgAAwAHAAIAAAALAAkAAwAHAAIAAAALAAoAAwAHAAIAAAALAAsAAwAHAAIAAAALAAwAAwAHAAIAAAADAAoAAwAHAAIAAAA=")
+tile_map_data = PackedByteArray("AAAAAAEAAwAIAAIAAAAAAAIAAwAIAAIAAAAAAAMAAwAIAAIAAAAAAAQAAwAIAAIAAAAAAAUAAwAIAAIAAAAAAAYAAwAJAAIAAAAAAAcAAwAHAAIAAAAAAAgAAwAHAAIAAAAAAAkAAwAHAAIAAAAAAAoAAwAHAAIAAAAAAAsAAwAHAAIAAAAAAAwAAwAKAAUAAAABAAEAAwAIAAIAAAABAAIAAwAIAAIAAAABAAMAAwAIAAIAAAABAAQAAwAIAAIAAAABAAUAAwAIAAIAAAABAAYAAwAJAAIAAAABAAcAAwAHAAIAAAABAAgAAwAHAAIAAAABAAkAAwAHAAIAAAABAAoAAwAHAAIAAAABAAsAAwAHAAIAAAABAAwAAwAKAAUAAAACAAEAAwAIAAIAAAACAAIAAwAIAAIAAAACAAMAAwAIAAIAAAACAAQAAwAIAAIAAAACAAUAAwAIAAIAAAACAAYAAwAJAAIAAAACAAcAAwAHAAIAAAACAAgAAwAHAAIAAAACAAkAAwAHAAIAAAACAAoAAwAHAAIAAAACAAsAAwAHAAIAAAACAAwAAwAKAAUAAAADAAEAAwAIAAIAAAADAAIAAwAIAAIAAAADAAMAAwAIAAIAAAADAAQAAwAIAAIAAAADAAUAAwAIAAIAAAADAAYAAwAJAAIAAAADAAcAAwAHAAIAAAADAAgAAwAHAAIAAAADAAkAAwAHAAIAAAADAAsAAwAHAAIAAAADAAwAAwAKAAUAAAAEAAEAAwAIAAIAAAAEAAIAAwAIAAIAAAAEAAMAAwAIAAIAAAAEAAQAAwAIAAIAAAAEAAUAAwAIAAIAAAAEAAYAAwAJAAIAAAAEAAcAAwAHAAIAAAAEAAgAAwAHAAIAAAAEAAkAAwAHAAIAAAAEAAoAAwAHAAIAAAAEAAsAAwAHAAIAAAAEAAwAAwAKAAUAAAAFAAEAAwAIAAIAAAAFAAIAAwAIAAIAAAAFAAMAAwAIAAIAAAAFAAQAAwAIAAIAAAAFAAUAAwAIAAIAAAAFAAYAAwAJAAIAAAAFAAcAAwAHAAIAAAAFAAgAAwAHAAIAAAAFAAkAAwAHAAIAAAAFAAoAAwAHAAIAAAAFAAsAAwAHAAIAAAAFAAwAAwAKAAUAAAAGAAEAAwAIAAIAAAAGAAIAAwAIAAIAAAAGAAMAAwAIAAIAAAAGAAQAAwAIAAIAAAAGAAUAAwAIAAIAAAAGAAYAAwAJAAIAAAAGAAcAAwAHAAIAAAAGAAgAAwAHAAIAAAAGAAkAAwAHAAIAAAAGAAoAAwAHAAIAAAAGAAsAAwAHAAIAAAAGAAwAAwAKAAUAAAAHAAEAAwAIAAIAAAAHAAIAAwAIAAIAAAAHAAMAAwAIAAIAAAAHAAQAAwAIAAIAAAAHAAUAAwAIAAIAAAAHAAYAAwAJAAIAAAAHAAcAAwAHAAIAAAAHAAgAAwAHAAIAAAAHAAkAAwAHAAIAAAAHAAoAAwAHAAIAAAAHAAsAAwAHAAIAAAAHAAwAAwAKAAUAAAAIAAEAAwAIAAIAAAAIAAIAAwAIAAIAAAAIAAMAAwAIAAIAAAAIAAQAAwAIAAIAAAAIAAUAAwAIAAIAAAAIAAYAAwAJAAIAAAAIAAcAAwAHAAIAAAAIAAgAAwAHAAIAAAAIAAkAAwAHAAIAAAAIAAoAAwAHAAIAAAAIAAsAAwAHAAIAAAAIAAwAAwAKAAUAAAAJAAEAAwAIAAIAAAAJAAIAAwAIAAIAAAAJAAMAAwAIAAIAAAAJAAQAAwAIAAIAAAAJAAUAAwAIAAIAAAAJAAYAAwAJAAIAAAAJAAcAAwAHAAIAAAAJAAgAAwAHAAIAAAAJAAkAAwAHAAIAAAAJAAoAAwAHAAIAAAAJAAsAAwAHAAIAAAAJAAwAAwAKAAUAAAAKAAEAAwAIAAIAAAAKAAIAAwAIAAIAAAAKAAMAAwAIAAIAAAAKAAQAAwAIAAIAAAAKAAUAAwAIAAIAAAAKAAYAAwAJAAIAAAAKAAcAAwAHAAIAAAAKAAgAAwAHAAIAAAAKAAkAAwAHAAIAAAAKAAoAAwAHAAIAAAAKAAsAAwAHAAIAAAAKAAwAAwAKAAUAAAAEAAAAAwALAAUAAAAFAAAAAwALAAUAAAAGAAAAAwALAAUAAAAHAAAAAwALAAUAAAAIAAAAAwALAAUAAAAJAAAAAwALAAUAAAAKAAAAAwALAAUAAAAMAAAAAwALAAUAAAAMAAEAAwAIAAIAAAAMAAIAAwAIAAIAAAAMAAMAAwAIAAIAAAAMAAQAAwAIAAIAAAAMAAUAAwAIAAIAAAAMAAYAAwAJAAIAAAAMAAcAAwAHAAIAAAAMAAgAAwAHAAIAAAAMAAkAAwAHAAIAAAAMAAoAAwAHAAIAAAAMAAsAAwAHAAIAAAAMAAwAAwAKAAUAAAALAAAAAwALAAUAAAALAAEAAwAIAAIAAAALAAIAAwAIAAIAAAALAAMAAwAIAAIAAAALAAQAAwAIAAIAAAALAAUAAwAIAAIAAAALAAYAAwAJAAIAAAALAAcAAwAHAAIAAAALAAgAAwAHAAIAAAALAAkAAwAHAAIAAAALAAoAAwAHAAIAAAALAAsAAwAHAAIAAAALAAwAAwAKAAUAAAADAAoAAwAHAAIAAAAAAAAAAwALAAUAAAABAAAAAwALAAUAAAACAAAAAwALAAUAAAADAAAAAwALAAUAAAA=")
 tile_set = ExtResource("1_bc8hh")
 
 [node name="Debug" type="Node2D" parent="TileMap"]
@@ -112,69 +111,6 @@ texture = ExtResource("7_v5usu")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="HelpPanel" type="TextureRect" parent="UI"]
-visible = false
-z_index = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -198.0
-offset_top = 93.0
-offset_right = 260.0
-offset_bottom = 539.0
-grow_horizontal = 2
-scale = Vector2(0.863031, 0.817149)
-texture = SubResource("GradientTexture1D_8qsxd")
-
-[node name="Label2" type="Label" parent="UI/HelpPanel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -48.5
-offset_top = 45.0
-offset_right = 48.5
-offset_bottom = 90.0
-grow_horizontal = 2
-text = "Aide"
-label_settings = SubResource("LabelSettings_v5usu")
-vertical_alignment = 1
-
-[node name="GridContainer" type="GridContainer" parent="UI/HelpPanel"]
-layout_mode = 0
-offset_left = 47.0
-offset_top = 229.0
-offset_right = 422.0
-offset_bottom = 314.0
-
-[node name="BoxContainer" type="HBoxContainer" parent="UI/HelpPanel/GridContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="UI/HelpPanel/GridContainer/BoxContainer"]
-layout_mode = 2
-texture = ExtResource("10_o5b5a")
-expand_mode = 3
-
-[node name="Label2" type="Label" parent="UI/HelpPanel/GridContainer/BoxContainer"]
-layout_mode = 2
-text = "Déplacer vous avec les flèches directionnelles"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/HelpPanel/GridContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="UI/HelpPanel/GridContainer/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("11_poe8c")
-expand_mode = 3
-
-[node name="Label" type="Label" parent="UI/HelpPanel/GridContainer/HBoxContainer"]
-layout_mode = 2
-text = "Poser des cubes en cliquant sur les cases"
-
-[node name="BtnRetour" type="Button" parent="UI/HelpPanel/GridContainer"]
-layout_mode = 2
-text = "Retour"
-
 [node name="MenuPanel" type="TextureRect" parent="UI" node_paths=PackedStringArray("main_panel", "help_panel")]
 visible = false
 z_index = 1
@@ -189,7 +125,6 @@ grow_horizontal = 2
 scale = Vector2(0.863031, 0.817149)
 texture = SubResource("GradientTexture1D_v5usu")
 script = ExtResource("10_poe8c")
-main_menu_scene = ExtResource("11_8qsxd")
 main_panel = NodePath(".")
 help_panel = NodePath("../HelpPanel")
 
@@ -214,11 +149,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -153.0
-offset_top = -114.5
+offset_top = -120.20357
 offset_right = 153.0
-offset_bottom = 114.5
+offset_bottom = 195.79645
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 64
 
 [node name="Play" type="Button" parent="UI/MenuPanel/VBoxContainer"]
 layout_mode = 2
@@ -235,6 +171,83 @@ text = "Menu Principal"
 [node name="Quitter" type="Button" parent="UI/MenuPanel/VBoxContainer"]
 layout_mode = 2
 text = "Quitter"
+
+[node name="HelpPanel" type="TextureRect" parent="UI"]
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = -231.0
+offset_right = 260.0
+offset_bottom = 215.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.85768676, 0.8180742)
+texture = SubResource("GradientTexture1D_8qsxd")
+
+[node name="Label2" type="Label" parent="UI/HelpPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.5
+offset_top = 45.0
+offset_right = 48.5
+offset_bottom = 90.0
+grow_horizontal = 2
+text = "Aide"
+label_settings = SubResource("LabelSettings_v5usu")
+vertical_alignment = 1
+
+[node name="BtnRetour" type="Button" parent="UI/HelpPanel"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = -1.5258789e-05
+offset_top = 415.2423
+offset_right = 457.67017
+offset_bottom = 446.2423
+text = "Retour"
+
+[node name="GridContainer" type="GridContainer" parent="UI/HelpPanel"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 142.73943
+offset_right = 438.0
+offset_bottom = 329.0
+theme_override_constants/v_separation = 59
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/HelpPanel/GridContainer"]
+layout_mode = 2
+text = "Le but du jeu est de battre une IA à un quoridor revisité. Il suffis d'arriver du coté de son adversaire pour gagner tout en le bloquant."
+fit_content = true
+
+[node name="BoxContainer" type="HBoxContainer" parent="UI/HelpPanel/GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/HelpPanel/GridContainer/BoxContainer"]
+layout_mode = 2
+texture = ExtResource("10_o5b5a")
+expand_mode = 3
+
+[node name="Label2" type="Label" parent="UI/HelpPanel/GridContainer/BoxContainer"]
+layout_mode = 2
+text = "Déplacer vous avec les flèches directionnelles"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HelpPanel/GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/HelpPanel/GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("11_poe8c")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="UI/HelpPanel/GridContainer/HBoxContainer"]
+layout_mode = 2
+text = "Poser des cubes en cliquant sur les cases"
 
 [node name="Fond" type="TextureRect" parent="UI"]
 visible = false
@@ -405,11 +418,11 @@ offset_bottom = 35.0
 button_pressed = true
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="UI/HelpPanel/GridContainer/BtnRetour" to="UI/MenuPanel" method="_on_btn_retour_pressed"]
 [connection signal="pressed" from="UI/MenuPanel/VBoxContainer/Play" to="UI/MenuPanel" method="_on_play_pressed"]
 [connection signal="pressed" from="UI/MenuPanel/VBoxContainer/Aide" to="UI/MenuPanel" method="_on_aide_pressed"]
 [connection signal="pressed" from="UI/MenuPanel/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="UI/MenuPanel/VBoxContainer/Quitter" to="UI/MenuPanel" method="_on_quitter_pressed"]
+[connection signal="pressed" from="UI/HelpPanel/BtnRetour" to="UI/MenuPanel" method="_on_btn_retour_pressed"]
 [connection signal="pressed" from="UI/Victoire/Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="UI/Victoire/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="UI/Defaite/Retry" to="." method="_on_retry_pressed"]
