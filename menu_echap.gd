@@ -1,6 +1,6 @@
 extends TextureRect
 
-@export var main_menu_scene: PackedScene
+@export var main_menu_scene: String = "res://Menu/Menu_scene.tscn"
 @export var main_panel: TextureRect
 @export var help_panel: TextureRect
 
@@ -23,5 +23,7 @@ func _on_btn_retour_pressed() -> void:
 
 func _on_menu_pressed() -> void:
 	get_tree().paused = false
-	if main_menu_scene != null:
-		get_tree().change_scene_to_file("res://Menu/Menu_scene.tscn")
+	if main_menu_scene != "":
+		var packed := load(main_menu_scene)
+		if packed:
+			get_tree().change_scene_to_packed(packed)

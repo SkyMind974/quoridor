@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=4 uid="uid://d0ntdpb3g7f5f"]
+[gd_scene load_steps=13 format=4 uid="uid://d0ntdpb3g7f5f"]
 
-[ext_resource type="Script" uid="uid://x18hdi0qxmqt" path="res://Menu/menu_scene.gd" id="1_smcpk"]
-[ext_resource type="PackedScene" uid="uid://bw3kevldii35p" path="res://jeu.tscn" id="2_v3b0u"]
+[ext_resource type="Script" path="res://Menu/menu_scene.gd" id="1_smcpk"]
 [ext_resource type="TileSet" uid="uid://buxa31rpwb4wq" path="res://Map.tres" id="3_rtwur"]
 [ext_resource type="Texture2D" uid="uid://72hb8yu7vsdk" path="res://kenney_isometric-blocks/PNG/Abstract tiles/abstractTile_17.png" id="4_tgit6"]
 [ext_resource type="Script" uid="uid://5kyvj1u6qni7" path="res://script/menuwalk.gd" id="5_wnh5h"]
@@ -37,7 +36,7 @@ tile_map_data = PackedByteArray("AAABAAIAAwAJAAIAAAABAAMAAwAJAAIAAAABAAQAAwAJAAI
 tile_set = ExtResource("3_rtwur")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="TileMap"]
-tile_map_data = PackedByteArray("AAAAAAEAAwAIAAIAAAAAAAIAAwAIAAIAAAAAAAMAAwAIAAIAAAAAAAQAAwAIAAIAAAAAAAUAAwAIAAIAAAAAAAYAAwAJAAIAAAAAAAcAAwAHAAIAAAAAAAgAAwAHAAIAAAAAAAkAAwAHAAIAAAAAAAoAAwAHAAIAAAAAAAsAAwAHAAIAAAAAAAwAAwAHAAIAAAABAAEAAwAIAAIAAAABAAIAAwAIAAIAAAABAAMAAwAIAAIAAAABAAQAAwAIAAIAAAABAAUAAwAIAAIAAAABAAYAAwAJAAIAAAABAAcAAwAHAAIAAAABAAgAAwAHAAIAAAABAAkAAwAHAAIAAAABAAoAAwAHAAIAAAABAAsAAwAHAAIAAAABAAwAAwAHAAIAAAACAAEAAwAIAAIAAAACAAIAAwAIAAIAAAACAAMAAwAIAAIAAAACAAQAAwAIAAIAAAACAAUAAwAIAAIAAAACAAYAAwAJAAIAAAACAAcAAwAHAAIAAAACAAgAAwAHAAIAAAACAAkAAwAHAAIAAAACAAoAAwAHAAIAAAACAAsAAwAHAAIAAAACAAwAAwAHAAIAAAADAAEAAwAIAAIAAAADAAIAAwAIAAIAAAADAAMAAwAIAAIAAAADAAQAAwAIAAIAAAADAAUAAwAIAAIAAAADAAYAAwAJAAIAAAADAAcAAwAHAAIAAAADAAgAAwAHAAIAAAADAAkAAwAHAAIAAAADAAsAAwAHAAIAAAADAAwAAwAHAAIAAAAEAAEAAwAIAAIAAAAEAAIAAwAIAAIAAAAEAAMAAwAIAAIAAAAEAAQAAwAIAAIAAAAEAAUAAwAIAAIAAAAEAAYAAwAJAAIAAAAEAAcAAwAHAAIAAAAEAAgAAwAHAAIAAAAEAAkAAwAHAAIAAAAEAAoAAwAHAAIAAAAEAAsAAwAHAAIAAAAEAAwAAwAHAAIAAAAFAAEAAwAIAAIAAAAFAAIAAwAIAAIAAAAFAAMAAwAIAAIAAAAFAAQAAwAIAAIAAAAFAAUAAwAIAAIAAAAFAAYAAwAJAAIAAAAFAAcAAwAHAAIAAAAFAAgAAwAHAAIAAAAFAAkAAwAHAAIAAAAFAAoAAwAHAAIAAAAFAAsAAwAHAAIAAAAFAAwAAwAHAAIAAAAGAAEAAwAIAAIAAAAGAAIAAwAIAAIAAAAGAAMAAwAIAAIAAAAGAAQAAwAIAAIAAAAGAAUAAwAIAAIAAAAGAAYAAwAJAAIAAAAGAAcAAwAHAAIAAAAGAAgAAwAHAAIAAAAGAAkAAwAHAAIAAAAGAAoAAwAHAAIAAAAGAAsAAwAHAAIAAAAGAAwAAwAHAAIAAAAHAAEAAwAIAAIAAAAHAAIAAwAIAAIAAAAHAAMAAwAIAAIAAAAHAAQAAwAIAAIAAAAHAAUAAwAIAAIAAAAHAAYAAwAJAAIAAAAHAAcAAwAHAAIAAAAHAAgAAwAHAAIAAAAHAAkAAwAHAAIAAAAHAAoAAwAHAAIAAAAHAAsAAwAHAAIAAAAHAAwAAwAHAAIAAAAIAAEAAwAIAAIAAAAIAAIAAwAIAAIAAAAIAAMAAwAIAAIAAAAIAAQAAwAIAAIAAAAIAAUAAwAIAAIAAAAIAAYAAwAJAAIAAAAIAAcAAwAHAAIAAAAIAAgAAwAHAAIAAAAIAAkAAwAHAAIAAAAIAAoAAwAHAAIAAAAIAAsAAwAHAAIAAAAIAAwAAwAHAAIAAAAJAAEAAwAIAAIAAAAJAAIAAwAIAAIAAAAJAAMAAwAIAAIAAAAJAAQAAwAIAAIAAAAJAAUAAwAIAAIAAAAJAAYAAwAJAAIAAAAJAAcAAwAHAAIAAAAJAAgAAwAHAAIAAAAJAAkAAwAHAAIAAAAJAAoAAwAHAAIAAAAJAAsAAwAHAAIAAAAJAAwAAwAHAAIAAAAKAAEAAwAIAAIAAAAKAAIAAwAIAAIAAAAKAAMAAwAIAAIAAAAKAAQAAwAIAAIAAAAKAAUAAwAIAAIAAAAKAAYAAwAJAAIAAAAKAAcAAwAHAAIAAAAKAAgAAwAHAAIAAAAKAAkAAwAHAAIAAAAKAAoAAwAHAAIAAAAKAAsAAwAHAAIAAAAKAAwAAwAHAAIAAAAAAAAAAwAIAAIAAAABAAAAAwAIAAIAAAACAAAAAwAIAAIAAAADAAAAAwAIAAIAAAAEAAAAAwAIAAIAAAAFAAAAAwAIAAIAAAAGAAAAAwAIAAIAAAAHAAAAAwAIAAIAAAAIAAAAAwAIAAIAAAAJAAAAAwAIAAIAAAAKAAAAAwAIAAIAAAAMAAAAAwAIAAIAAAAMAAEAAwAIAAIAAAAMAAIAAwAIAAIAAAAMAAMAAwAIAAIAAAAMAAQAAwAIAAIAAAAMAAUAAwAIAAIAAAAMAAYAAwAJAAIAAAAMAAcAAwAHAAIAAAAMAAgAAwAHAAIAAAAMAAkAAwAHAAIAAAAMAAoAAwAHAAIAAAAMAAsAAwAHAAIAAAAMAAwAAwAHAAIAAAALAAAAAwAIAAIAAAALAAEAAwAIAAIAAAALAAIAAwAIAAIAAAALAAMAAwAIAAIAAAALAAQAAwAIAAIAAAALAAUAAwAIAAIAAAALAAYAAwAJAAIAAAALAAcAAwAHAAIAAAALAAgAAwAHAAIAAAALAAkAAwAHAAIAAAALAAoAAwAHAAIAAAALAAsAAwAHAAIAAAALAAwAAwAHAAIAAAADAAoAAwAHAAIAAAA=")
+tile_map_data = PackedByteArray("AAAAAAEAAwAIAAIAAAAAAAIAAwAIAAIAAAAAAAMAAwAIAAIAAAAAAAQAAwAIAAIAAAAAAAUAAwAIAAIAAAAAAAYAAwAJAAIAAAAAAAcAAwAHAAIAAAAAAAgAAwAHAAIAAAAAAAkAAwAHAAIAAAAAAAoAAwAHAAIAAAAAAAsAAwAHAAIAAAAAAAwAAwAKAAUAAAABAAEAAwAIAAIAAAABAAIAAwAIAAIAAAABAAMAAwAIAAIAAAABAAQAAwAIAAIAAAABAAUAAwAIAAIAAAABAAYAAwAJAAIAAAABAAcAAwAHAAIAAAABAAgAAwAHAAIAAAABAAkAAwAHAAIAAAABAAoAAwAHAAIAAAABAAsAAwAHAAIAAAABAAwAAwAKAAUAAAACAAEAAwAIAAIAAAACAAIAAwAIAAIAAAACAAMAAwAIAAIAAAACAAQAAwAIAAIAAAACAAUAAwAIAAIAAAACAAYAAwAJAAIAAAACAAcAAwAHAAIAAAACAAgAAwAHAAIAAAACAAkAAwAHAAIAAAACAAoAAwAHAAIAAAACAAsAAwAHAAIAAAACAAwAAwAKAAUAAAADAAEAAwAIAAIAAAADAAIAAwAIAAIAAAADAAMAAwAIAAIAAAADAAQAAwAIAAIAAAADAAUAAwAIAAIAAAADAAYAAwAJAAIAAAADAAcAAwAHAAIAAAADAAgAAwAHAAIAAAADAAkAAwAHAAIAAAADAAsAAwAHAAIAAAADAAwAAwAKAAUAAAAEAAEAAwAIAAIAAAAEAAIAAwAIAAIAAAAEAAMAAwAIAAIAAAAEAAQAAwAIAAIAAAAEAAUAAwAIAAIAAAAEAAYAAwAJAAIAAAAEAAcAAwAHAAIAAAAEAAgAAwAHAAIAAAAEAAkAAwAHAAIAAAAEAAoAAwAHAAIAAAAEAAsAAwAHAAIAAAAEAAwAAwAKAAUAAAAFAAEAAwAIAAIAAAAFAAIAAwAIAAIAAAAFAAMAAwAIAAIAAAAFAAQAAwAIAAIAAAAFAAUAAwAIAAIAAAAFAAYAAwAJAAIAAAAFAAcAAwAHAAIAAAAFAAgAAwAHAAIAAAAFAAkAAwAHAAIAAAAFAAoAAwAHAAIAAAAFAAsAAwAHAAIAAAAFAAwAAwAKAAUAAAAGAAEAAwAIAAIAAAAGAAIAAwAIAAIAAAAGAAMAAwAIAAIAAAAGAAQAAwAIAAIAAAAGAAUAAwAIAAIAAAAGAAYAAwAJAAIAAAAGAAcAAwAHAAIAAAAGAAgAAwAHAAIAAAAGAAkAAwAHAAIAAAAGAAoAAwAHAAIAAAAGAAsAAwAHAAIAAAAGAAwAAwAKAAUAAAAHAAEAAwAIAAIAAAAHAAIAAwAIAAIAAAAHAAMAAwAIAAIAAAAHAAQAAwAIAAIAAAAHAAUAAwAIAAIAAAAHAAYAAwAJAAIAAAAHAAcAAwAHAAIAAAAHAAgAAwAHAAIAAAAHAAkAAwAHAAIAAAAHAAoAAwAHAAIAAAAHAAsAAwAHAAIAAAAHAAwAAwAKAAUAAAAIAAEAAwAIAAIAAAAIAAIAAwAIAAIAAAAIAAMAAwAIAAIAAAAIAAQAAwAIAAIAAAAIAAUAAwAIAAIAAAAIAAYAAwAJAAIAAAAIAAcAAwAHAAIAAAAIAAgAAwAHAAIAAAAIAAkAAwAHAAIAAAAIAAoAAwAHAAIAAAAIAAsAAwAHAAIAAAAIAAwAAwAKAAUAAAAJAAEAAwAIAAIAAAAJAAIAAwAIAAIAAAAJAAMAAwAIAAIAAAAJAAQAAwAIAAIAAAAJAAUAAwAIAAIAAAAJAAYAAwAJAAIAAAAJAAcAAwAHAAIAAAAJAAgAAwAHAAIAAAAJAAkAAwAHAAIAAAAJAAoAAwAHAAIAAAAJAAsAAwAHAAIAAAAJAAwAAwAKAAUAAAAKAAEAAwAIAAIAAAAKAAIAAwAIAAIAAAAKAAMAAwAIAAIAAAAKAAQAAwAIAAIAAAAKAAUAAwAIAAIAAAAKAAYAAwAJAAIAAAAKAAcAAwAHAAIAAAAKAAgAAwAHAAIAAAAKAAkAAwAHAAIAAAAKAAoAAwAHAAIAAAAKAAsAAwAHAAIAAAAKAAwAAwAKAAUAAAAAAAAAAwALAAUAAAABAAAAAwALAAUAAAACAAAAAwALAAUAAAADAAAAAwALAAUAAAAEAAAAAwALAAUAAAAFAAAAAwALAAUAAAAGAAAAAwALAAUAAAAHAAAAAwALAAUAAAAIAAAAAwALAAUAAAAJAAAAAwALAAUAAAAKAAAAAwALAAUAAAAMAAAAAwALAAUAAAAMAAEAAwAIAAIAAAAMAAIAAwAIAAIAAAAMAAMAAwAIAAIAAAAMAAQAAwAIAAIAAAAMAAUAAwAIAAIAAAAMAAYAAwAJAAIAAAAMAAcAAwAHAAIAAAAMAAgAAwAHAAIAAAAMAAkAAwAHAAIAAAAMAAoAAwAHAAIAAAAMAAsAAwAHAAIAAAAMAAwAAwAKAAUAAAALAAAAAwALAAUAAAALAAEAAwAIAAIAAAALAAIAAwAIAAIAAAALAAMAAwAIAAIAAAALAAQAAwAIAAIAAAALAAUAAwAIAAIAAAALAAYAAwAJAAIAAAALAAcAAwAHAAIAAAALAAgAAwAHAAIAAAALAAkAAwAHAAIAAAALAAoAAwAHAAIAAAALAAsAAwAHAAIAAAALAAwAAwAKAAUAAAADAAoAAwAHAAIAAAA=")
 tile_set = ExtResource("3_rtwur")
 
 [node name="Debug" type="Node2D" parent="TileMap"]
@@ -76,7 +75,6 @@ grow_horizontal = 2
 scale = Vector2(1.62781, 1.54127)
 texture = SubResource("GradientTexture1D_h4dl8")
 script = ExtResource("6_fmc12")
-game_scene = ExtResource("2_v3b0u")
 main_panel = NodePath(".")
 mode_panel = NodePath("../ModePanel")
 help_panel = NodePath("../HelpPanel")
@@ -107,6 +105,7 @@ offset_right = 153.0
 offset_bottom = 114.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 59
 
 [node name="Play" type="Button" parent="MenuPanel/VBoxContainer"]
 layout_mode = 2
@@ -121,6 +120,7 @@ layout_mode = 2
 text = "Quitter"
 
 [node name="ModePanel" type="TextureRect" parent="."]
+visible = false
 z_index = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -145,33 +145,43 @@ grow_horizontal = 2
 text = "Mode de Jeux"
 label_settings = SubResource("LabelSettings_l7ps2")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="ModePanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ModePanel"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -153.0
-offset_top = -114.0
-offset_right = 153.0
-offset_bottom = 115.0
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+theme_override_constants/separation = 191
 
-[node name="BtnDijkstra" type="Button" parent="ModePanel/VBoxContainer2"]
+[node name="VBoxContainer2" type="HBoxContainer" parent="ModePanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 2.55
+theme_override_constants/separation = 34
+
+[node name="BtnDijkstra" type="Button" parent="ModePanel/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 text = "Dijkstra"
 
-[node name="BtnAStar" type="Button" parent="ModePanel/VBoxContainer2"]
+[node name="BtnAStar" type="Button" parent="ModePanel/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 text = "A*"
 
-[node name="BtnRetour" type="Button" parent="ModePanel/VBoxContainer2"]
+[node name="BtnAStar2" type="Button" parent="ModePanel/VBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(65.075, 0)
+layout_mode = 2
+text = "Coop"
+
+[node name="BtnRetour" type="Button" parent="ModePanel/VBoxContainer"]
 layout_mode = 2
 text = "Retour"
 
 [node name="HelpPanel" type="TextureRect" parent="."]
+visible = false
 z_index = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -197,12 +207,27 @@ text = "Aide"
 label_settings = SubResource("LabelSettings_l7ps2")
 vertical_alignment = 1
 
+[node name="BtnRetour" type="Button" parent="HelpPanel"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = -1.5258789e-05
+offset_top = 415.2423
+offset_right = 457.67017
+offset_bottom = 446.2423
+text = "Retour"
+
 [node name="GridContainer" type="GridContainer" parent="HelpPanel"]
 layout_mode = 0
 offset_left = 47.0
-offset_top = 229.0
-offset_right = 422.0
-offset_bottom = 314.0
+offset_top = 142.73943
+offset_right = 438.0
+offset_bottom = 329.0
+theme_override_constants/v_separation = 59
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HelpPanel/GridContainer"]
+layout_mode = 2
+text = "Le but du jeu est de battre une IA à un quoridor revisité. Il suffis d'arriver du coté de son adversaire pour gagner tout en le bloquant."
+fit_content = true
 
 [node name="BoxContainer" type="HBoxContainer" parent="HelpPanel/GridContainer"]
 layout_mode = 2
@@ -227,10 +252,6 @@ expand_mode = 3
 [node name="Label" type="Label" parent="HelpPanel/GridContainer/HBoxContainer"]
 layout_mode = 2
 text = "Poser des cubes en cliquant sur les cases"
-
-[node name="BtnRetour" type="Button" parent="HelpPanel/GridContainer"]
-layout_mode = 2
-text = "Retour"
 
 [node name="Label" type="Label" parent="."]
 offset_left = -1148.0
@@ -267,11 +288,13 @@ scale = Vector2(1.59335, 1.59335)
 [connection signal="pressed" from="MenuPanel/VBoxContainer/Aide" to="MenuPanel" method="_on_aide_pressed"]
 [connection signal="pressed" from="MenuPanel/VBoxContainer/Quitter" to="." method="_on_quitter_pressed"]
 [connection signal="pressed" from="MenuPanel/VBoxContainer/Quitter" to="MenuPanel" method="_on_quitter_pressed"]
-[connection signal="pressed" from="ModePanel/VBoxContainer2/BtnDijkstra" to="." method="_on_btn_dijkstra_pressed"]
-[connection signal="pressed" from="ModePanel/VBoxContainer2/BtnDijkstra" to="MenuPanel" method="_on_btn_dijkstra_pressed"]
-[connection signal="pressed" from="ModePanel/VBoxContainer2/BtnAStar" to="." method="_on_btn_a_star_pressed"]
-[connection signal="pressed" from="ModePanel/VBoxContainer2/BtnAStar" to="MenuPanel" method="_on_btn_a_star_pressed"]
-[connection signal="pressed" from="ModePanel/VBoxContainer2/BtnRetour" to="." method="_on_btn_retour_pressed"]
-[connection signal="pressed" from="ModePanel/VBoxContainer2/BtnRetour" to="MenuPanel" method="_on_btn_retour_pressed"]
-[connection signal="pressed" from="HelpPanel/GridContainer/BtnRetour" to="." method="_on_btn_retour_pressed"]
-[connection signal="pressed" from="HelpPanel/GridContainer/BtnRetour" to="MenuPanel" method="_on_btn_retour_pressed"]
+[connection signal="pressed" from="ModePanel/VBoxContainer/VBoxContainer2/BtnDijkstra" to="." method="_on_btn_dijkstra_pressed"]
+[connection signal="pressed" from="ModePanel/VBoxContainer/VBoxContainer2/BtnDijkstra" to="MenuPanel" method="_on_btn_dijkstra_pressed"]
+[connection signal="pressed" from="ModePanel/VBoxContainer/VBoxContainer2/BtnAStar" to="." method="_on_btn_a_star_pressed"]
+[connection signal="pressed" from="ModePanel/VBoxContainer/VBoxContainer2/BtnAStar" to="MenuPanel" method="_on_btn_a_star_pressed"]
+[connection signal="pressed" from="ModePanel/VBoxContainer/VBoxContainer2/BtnAStar2" to="." method="_on_btn_a_star_pressed"]
+[connection signal="pressed" from="ModePanel/VBoxContainer/VBoxContainer2/BtnAStar2" to="MenuPanel" method="_on_btn_a_star_pressed"]
+[connection signal="pressed" from="ModePanel/VBoxContainer/BtnRetour" to="." method="_on_btn_retour_pressed"]
+[connection signal="pressed" from="ModePanel/VBoxContainer/BtnRetour" to="MenuPanel" method="_on_btn_retour_pressed"]
+[connection signal="pressed" from="HelpPanel/BtnRetour" to="." method="_on_btn_retour_pressed"]
+[connection signal="pressed" from="HelpPanel/BtnRetour" to="MenuPanel" method="_on_btn_retour_pressed"]
