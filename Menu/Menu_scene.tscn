@@ -211,12 +211,9 @@ label_settings = SubResource("LabelSettings_l7ps2")
 vertical_alignment = 1
 
 [node name="BtnRetour" type="Button" parent="HelpPanel"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 0
-offset_left = -1.52588e-05
-offset_top = 415.242
-offset_right = 457.67
-offset_bottom = 446.242
+offset_top = 415.488
+offset_right = 458.0
+offset_bottom = 446.488
 text = "Retour"
 
 [node name="GridContainer" type="GridContainer" parent="HelpPanel"]
@@ -226,10 +223,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -195.5
-offset_top = -66.6355
-offset_right = 195.5
-offset_bottom = 236.365
+offset_left = -195.0
+offset_top = -67.0
+offset_right = 196.0
+offset_bottom = 181.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/v_separation = 29
@@ -276,35 +273,43 @@ layout_mode = 2
 text = "Les cases oranges sont des cases de passe tour"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="."]
+[node name="BoxContainer2" type="HBoxContainer" parent="."]
 offset_left = -1148.0
-offset_top = -233.0
-offset_right = -1083.0
-offset_bottom = -210.0
-scale = Vector2(1.59335, 1.59335)
-text = "Dijkstra:"
+offset_top = -194.0
+offset_right = -1039.0
+offset_bottom = -171.0
+scale = Vector2(1.62181, 1.62181)
 
-[node name="Score1" type="Label" parent="."]
-offset_left = -1044.0
-offset_top = -233.0
-offset_right = -1004.0
-offset_bottom = -210.0
-scale = Vector2(1.59335, 1.59335)
+[node name="TextureRect" type="TextureRect" parent="BoxContainer2"]
+layout_mode = 2
+texture = ExtResource("6_jcuqc")
+expand_mode = 3
 
-[node name="Label2" type="Label" parent="."]
-offset_left = -1148.0
-offset_top = -196.0
-offset_right = -1108.0
-offset_bottom = -173.0
-scale = Vector2(1.59335, 1.59335)
+[node name="Label2" type="Label" parent="BoxContainer2"]
+layout_mode = 2
 text = "A*:"
 
-[node name="Score2" type="Label" parent="."]
-offset_left = -1108.0
-offset_top = -196.0
-offset_right = -1068.0
-offset_bottom = -173.0
-scale = Vector2(1.59335, 1.59335)
+[node name="Score2" type="Label" parent="BoxContainer2"]
+layout_mode = 2
+
+[node name="BoxContainer" type="HBoxContainer" parent="."]
+offset_left = -1148.0
+offset_top = -233.0
+offset_right = -1039.0
+offset_bottom = -210.0
+scale = Vector2(1.62181, 1.62181)
+
+[node name="TextureRect" type="TextureRect" parent="BoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_tgit6")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="BoxContainer"]
+layout_mode = 2
+text = "Dijkstra:"
+
+[node name="Score1" type="Label" parent="BoxContainer"]
+layout_mode = 2
 
 [connection signal="pressed" from="MenuPanel/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MenuPanel/VBoxContainer/Play" to="MenuPanel" method="_on_play_pressed"]

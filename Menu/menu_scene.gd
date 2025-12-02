@@ -12,8 +12,8 @@ const INF := 1_000_000.0
 @onready var astar_agent: Node2D    = $TileMap/AStarAgent
 @onready var dijkstra_agent: Node2D = $TileMap/DijkstraAgent
 
-@onready var score1_label: Label    = $Score1   # score Dijkstra
-@onready var score2_label: Label    = $Score2   # score A*
+@onready var score1_label: Label    = $BoxContainer/Score1   # score Dijkstra
+@onready var score2_label: Label    = $BoxContainer2/Score2  # score A*
 
 var blocked := []
 var board_min: Vector2i

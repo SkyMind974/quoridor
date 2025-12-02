@@ -44,13 +44,10 @@ var current_turn: Turn = Turn.PLAYER
 var blocked: Array = []
 var costs : Array = []  
 var last_dijkstra_dist: Dictionary = {}
-var debug_enabled := true
+var debug_enabled := false
 var game_over := false
 
-
-# ======================================================
 # ===================   READY   ========================
-# ======================================================
 func _ready() -> void:
 	pause_menu.visible = false
 	
