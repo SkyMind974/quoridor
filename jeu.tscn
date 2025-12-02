@@ -11,7 +11,7 @@
 [ext_resource type="FontFile" uid="uid://d1xah8tntvofd" path="res://Walton.otf" id="6_aw23n"]
 [ext_resource type="Texture2D" uid="uid://dcpncmvj0g7hv" path="res://kenney_isometric-blocks/PNG/Abstract tiles/abstractTile_08.png" id="7_v5usu"]
 [ext_resource type="Texture2D" uid="uid://d1aveuwisg1qt" path="res://Menu/clavier.png" id="10_o5b5a"]
-[ext_resource type="Script" uid="uid://c0l0gqe3ry5uh" path="res://menu_echap.gd" id="10_poe8c"]
+[ext_resource type="Script" uid="uid://c0l0gqe3ry5uh" path="res://Menu/menu_echap.gd" id="10_poe8c"]
 [ext_resource type="Texture2D" uid="uid://yjdur02a7yi1" path="res://kenney_isometric-blocks/PNG/Abstract tiles/abstractTile_09.png" id="11_poe8c"]
 [ext_resource type="Texture2D" uid="uid://xmw0sawrhh8y" path="res://kenney_isometric-blocks/PNG/Voxel tiles/voxelTile_01.png" id="12_v5usu"]
 
