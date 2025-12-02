@@ -3,13 +3,19 @@ extends Node2D
 const SIZE := 13
 const WallScene := preload("res://Wall.tscn")
 const DebugCellScene := preload("res://DebugCell.tscn")
+const StunScene := preload("res://StunTile.tscn")
+var player_stunned: bool = false
+var ai_stunned: bool = false
+var turn_count: int = 1
 const INF := 1_000_000.0
 
 @onready var ground = $TileMap/TileMapLayer
 @onready var player_node: Node2D = $TileMap/Player
 @onready var ai_node: Node2D = $TileMap/IA
 @onready var walls_root: Node2D = $TileMap/Walls
+@onready var stun_root: Node2D = $TileMap/Stun
 @onready var debug_root: Node2D = $TileMap/Debug
+@onready var turn_label: Label = $UI/TurnLabel
 
 @onready var notification_panel := $UI/TextureRect
 @onready var notification_label := $UI/TextureRect/Label
@@ -36,6 +42,7 @@ var ai_cell: Vector2i
 
 var current_turn: Turn = Turn.PLAYER
 var blocked: Array = []
+var costs : Array = []  
 var last_dijkstra_dist: Dictionary = {}
 var debug_enabled := true
 var game_over := false
@@ -71,6 +78,7 @@ func _ready() -> void:
 
 	_update_positions()
 	_spawn_random_walls(20)
+	_spawn_random_stun(20)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE:
@@ -100,11 +108,15 @@ func grid_to_world(cell: Vector2i) -> Vector2:
 
 func _init_blocked() -> void:
 	blocked.resize(SIZE)
+	costs.resize(SIZE)
+
 	for y in SIZE:
-		var row: Array[bool] = []
+		blocked[y] = []
+		costs[y] = []
 		for x in SIZE:
-			row.append(false)
-		blocked[y] = row
+			blocked[y].append(false)
+			costs[y].append(1)   # coût normal
+
 
 func _index(cell: Vector2i) -> Vector2i:
 	return Vector2i(cell.x - board_min.x, cell.y - board_min.y)
@@ -151,6 +163,8 @@ func _show_notification(text: String) -> void:
 		notification_panel.visible = false
 		notification_label.visible = false
 
+func _update_turn_label() -> void:
+	turn_label.text = "Tour : " + str(turn_count)
 
 # ===================   WALLS   ========================
 func _set_blocked(cell: Vector2i, show_notif := true) -> bool:
@@ -201,6 +215,41 @@ func _spawn_random_walls(count: int) -> void:
 		if _set_blocked(c, false):
 			placed += 1
 
+# ================= Stun ========================
+func set_stun_cell(cell: Vector2i, cost := 3):
+	var idx := _index(cell)
+	if idx.x < 0 or idx.x >= SIZE or idx.y < 0 or idx.y >= SIZE:
+		return
+
+	costs[idx.y][idx.x] = cost 
+
+	var stun := StunScene.instantiate()
+	stun.position = grid_to_world(cell)
+	stun_root.add_child(stun)
+
+func _spawn_random_stun(count: int) -> void:
+	var placed := 0
+	var tries := 0
+
+	while placed < count and tries < count * 40:
+		tries += 1
+		var c := Vector2i(
+			rng.randi_range(board_min.x, board_max.x),
+			rng.randi_range(board_min.y, board_max.y)
+		)
+
+		if c == player_cell or c == ai_cell:
+			continue
+
+		if _is_blocked(c):
+			continue
+
+		var idx := _index(c)
+		if costs[idx.y][idx.x] != 1:
+			continue
+
+		set_stun_cell(c, 3)
+		placed += 1
 
 # ================= PATHFINDING ========================
 func compute_path(start: Vector2i, goals: Array[Vector2i], debug: bool) -> Array[Vector2i]:
@@ -276,7 +325,9 @@ func _dijkstra(start: Vector2i, goals: Array[Vector2i], debug := true) -> Array[
 			break
 
 		for v in _get_neighbors(u):
-			var alt: float = float(dist.get(u, INF)) + 1.0
+			var idx := _index(v)
+			var tile_cost: float = float(costs[idx.y][idx.x])
+			var alt: float = float(dist.get(u, INF)) + tile_cost
 			if alt < float(dist.get(v, INF)):
 				dist[v] = alt
 				prev[v] = u
@@ -324,7 +375,9 @@ func _astar(start: Vector2i, goals: Array[Vector2i], debug := true) -> Array[Vec
 			break
 
 		for n in _get_neighbors(current):
-			var ng: float = float(g.get(current, INF)) + 1.0
+			var idx := _index(n)
+			var tile_cost: float = float(costs[idx.y][idx.x])
+			var ng: float = float(g.get(current, INF)) + tile_cost
 
 			if ng < float(g.get(n, INF)):
 				came[n] = current
@@ -388,7 +441,16 @@ func _end_player_turn() -> void:
 func end_ai_turn() -> void:
 	if _check_victory():
 		return
+	turn_count += 1
+	_update_turn_label()
+	# IA stun ?
+	if ai_stunned:
+		ai_stunned = false
+		_show_notification("L'IA est stun !")
+		current_turn = Turn.PLAYER
+		return
 	current_turn = Turn.PLAYER
+
 
 func _check_victory():
 	if player_cell.y == board_min.y:
@@ -422,6 +484,13 @@ func _show_victory(p: bool) -> void:
 func request_player_move(dir: Vector2i) -> void:
 	if game_over:
 		return
+
+	if player_stunned:
+		player_stunned = false
+		_show_notification("Tu es étourdi !")
+		_end_player_turn()
+		return
+
 	if current_turn != Turn.PLAYER:
 		return
 
@@ -429,6 +498,13 @@ func request_player_move(dir: Vector2i) -> void:
 	if _can_move(t):
 		player_cell = t
 		_update_positions()
+
+		# Vérifier si la case a un stun
+		var idx := _index(player_cell)
+		if costs[idx.y][idx.x] > 1:
+			player_stunned = true
+			_show_notification("Stun ! Tu perds 1 tour.")
+
 		_end_player_turn()
 
 func request_player_place_wall(cell: Vector2i) -> void:
@@ -447,8 +523,11 @@ func _on_debug_button_pressed() -> void:
 
 
 func _on_retry_pressed() -> void:
+	turn_count = 0
+	_update_turn_label()
 	game_over = false
 	get_tree().reload_current_scene()
+
 
 
 func _on_menu_pressed() -> void:

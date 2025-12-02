@@ -25,6 +25,9 @@ texture_region_size = Vector2i(111, 128)
 10:5/0/texture_origin = Vector2i(0, -28)
 11:5/0 = 0
 11:5/0/texture_origin = Vector2i(0, -28)
+5:6/0 = 0
+5:6/0/texture_origin = Vector2i(0, -30)
+5:6/0/y_sort_origin = 15
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mgms1"]
 texture = ExtResource("2_fvnn8")

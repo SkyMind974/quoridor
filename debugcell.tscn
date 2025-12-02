@@ -5,21 +5,23 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_xj0oy"]
 font = ExtResource("1_d63r8")
-font_size = 21
-font_color = Color(0, 0, 0, 1)
+font_size = 29
+font_color = Color(0.978041, 0.813492, 1.15514e-06, 1)
 
 [node name="Node2D" type="Node2D"]
-scale = Vector2(0.9232117, 0.9232117)
+scale = Vector2(0.441495, 0.441495)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+visible = false
+scale = Vector2(0.905953, 0.905953)
 tile_map_data = PackedByteArray(0, 0, 255, 255, 0, 0, 3, 0, 4, 0, 6, 0, 0, 0)
 tile_set = ExtResource("1_xj0oy")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -6.499051
-offset_top = -15.164453
-offset_right = 3.500949
-offset_bottom = 7.8355474
-scale = Vector2(1.3205123, 1.3205123)
-text = "1"
+offset_left = -31.7104
+offset_top = -31.7104
+offset_right = -2.71043
+offset_bottom = -0.710426
+scale = Vector2(1.94664, 1.94664)
+text = "01"
 label_settings = SubResource("LabelSettings_xj0oy")

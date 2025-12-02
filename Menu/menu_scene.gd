@@ -2,10 +2,12 @@ extends Node2D
 
 const SIZE := 13
 const WallScene := preload("res://Wall.tscn")
+const StunScene = preload("res://StunTile.tscn")
 const INF := 1_000_000.0
 
 @onready var ground: TileMapLayer   = $TileMap/TileMapLayer
 @onready var walls_root: Node2D     = $TileMap/Walls
+@onready var stun_root: Node2D     = $TileMap/Stun
 
 @onready var astar_agent: Node2D    = $TileMap/AStarAgent
 @onready var dijkstra_agent: Node2D = $TileMap/DijkstraAgent
@@ -20,6 +22,8 @@ var rng := RandomNumberGenerator.new()
 
 var score_dijkstra: int = 0
 var score_astar: int = 0
+var costs := []
+const STUN_COST := 3
 
 
 func _ready():
@@ -29,6 +33,7 @@ func _ready():
 
 	_init_blocked()
 	_spawn_menu_walls(22)
+	_spawn_stun_tiles(15)
 
 	astar_agent.board = self
 	dijkstra_agent.board = self
@@ -51,10 +56,15 @@ func _ready():
 
 func _init_blocked():
 	blocked.resize(SIZE)
+	costs.resize(SIZE)
+
 	for y in SIZE:
 		blocked[y] = []
+		costs[y] = []
 		for x in SIZE:
 			blocked[y].append(false)
+			costs[y].append(1)
+
 
 
 func _index(c: Vector2i) -> Vector2i:
@@ -81,6 +91,8 @@ func _spawn_menu_walls(count: int):
 		)
 		if _is_blocked(c):
 			continue
+		if c == astar_agent.start_cell or c == dijkstra_agent.start_cell:
+			continue
 
 		var idx := _index(c)
 		blocked[idx.y][idx.x] = true
@@ -90,6 +102,42 @@ func _spawn_menu_walls(count: int):
 		walls_root.add_child(w)
 
 		placed += 1
+		
+func _spawn_stun_tiles(count: int):
+	rng.randomize()
+	var tries := 0
+	var placed := 0
+
+	while placed < count and tries < count * 40:
+		tries += 1
+		var c := Vector2i(
+			rng.randi_range(board_min.x, board_max.x),
+			rng.randi_range(board_min.y, board_max.y)
+		)
+
+		var i := _index(c)
+
+		# interdit :
+		# les cases bloquées
+		# les cases de départ IA / Dijkstra
+		# les lignes de but
+		if _is_blocked(c):
+			continue
+		if c == astar_agent.start_cell or c == dijkstra_agent.start_cell:
+			continue
+		if c.y == board_min.y or c.y == board_max.y:
+			continue
+
+		# APPLIQUER LE COÛT
+		costs[i.y][i.x] = STUN_COST
+
+		# INSTANTIATE VISUEL
+		var stun := StunScene.instantiate()
+		stun.position = to_world(c)
+		stun_root.add_child(stun)
+
+		placed += 1
+
 
 
 func _world_to_cell(pos: Vector2) -> Vector2i:
@@ -155,15 +203,18 @@ func _astar(start: Vector2i, goals: Array[Vector2i]) -> Array[Vector2i]:
 		)
 		var current: Vector2i = open.pop_front()
 
+		# si on est arrivé
 		if goals.has(current):
 			return _reconstruct_path(came, start, current)
 
 		for n in _get_neighbors(current):
-			var ng = g.get(current, INF) + 1.0
+			var ng = g.get(current, INF) + 1.0  # A* ignore le coût stun
+
 			if ng < g.get(n, INF):
 				came[n] = current
 				g[n] = ng
 				f[n] = ng + _heuristic_to_line(n, goals)
+
 				if not open.has(n):
 					open.append(n)
 
@@ -187,7 +238,9 @@ func _dijkstra(start: Vector2i, goals: Array[Vector2i]) -> Array[Vector2i]:
 			return _reconstruct_path(prev, start, u)
 
 		for v in _get_neighbors(u):
-			var alt = dist.get(u, INF) + 1.0
+			var i := _index(v)
+			var tile_cost := float(costs[i.y][i.x])
+			var alt = dist.get(u, INF) + tile_cost
 			if alt < dist.get(v, INF):
 				dist[v] = alt
 				prev[v] = u
@@ -227,7 +280,6 @@ func agent_reached_goal(agent: Node2D) -> void:
 
 
 func _restart_race() -> void:
-	# stop les boucles
 	dijkstra_agent.stop()
 	astar_agent.stop()
 
@@ -235,7 +287,11 @@ func _restart_race() -> void:
 
 	for child in walls_root.get_children():
 		child.queue_free()
+	for child in stun_root.get_children():
+		child.queue_free()
 	_init_blocked()
 	_spawn_menu_walls(22)
+	_spawn_stun_tiles(15)
+
 	astar_agent.start()
 	dijkstra_agent.start()

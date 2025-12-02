@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=4 uid="uid://d0ntdpb3g7f5f"]
+[gd_scene load_steps=14 format=4 uid="uid://d0ntdpb3g7f5f"]
 
-[ext_resource type="Script" path="res://Menu/menu_scene.gd" id="1_smcpk"]
+[ext_resource type="Script" uid="uid://x18hdi0qxmqt" path="res://Menu/menu_scene.gd" id="1_smcpk"]
 [ext_resource type="TileSet" uid="uid://buxa31rpwb4wq" path="res://Map.tres" id="3_rtwur"]
 [ext_resource type="Texture2D" uid="uid://72hb8yu7vsdk" path="res://kenney_isometric-blocks/PNG/Abstract tiles/abstractTile_17.png" id="4_tgit6"]
 [ext_resource type="Script" uid="uid://5kyvj1u6qni7" path="res://script/menuwalk.gd" id="5_wnh5h"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://d1xah8tntvofd" path="res://Walton.otf" id="7_bo1wi"]
 [ext_resource type="Texture2D" uid="uid://d1aveuwisg1qt" path="res://Menu/clavier.png" id="8_ltt11"]
 [ext_resource type="Texture2D" uid="uid://yjdur02a7yi1" path="res://kenney_isometric-blocks/PNG/Abstract tiles/abstractTile_09.png" id="9_obx4k"]
+[ext_resource type="Texture2D" uid="uid://xmw0sawrhh8y" path="res://kenney_isometric-blocks/PNG/Voxel tiles/voxelTile_01.png" id="10_v3b0u"]
 
 [sub_resource type="Gradient" id="Gradient_v3b0u"]
 offsets = PackedFloat32Array(0)
@@ -38,6 +39,9 @@ tile_set = ExtResource("3_rtwur")
 [node name="TileMapLayer" type="TileMapLayer" parent="TileMap"]
 tile_map_data = PackedByteArray("AAAAAAEAAwAIAAIAAAAAAAIAAwAIAAIAAAAAAAMAAwAIAAIAAAAAAAQAAwAIAAIAAAAAAAUAAwAIAAIAAAAAAAYAAwAJAAIAAAAAAAcAAwAHAAIAAAAAAAgAAwAHAAIAAAAAAAkAAwAHAAIAAAAAAAoAAwAHAAIAAAAAAAsAAwAHAAIAAAAAAAwAAwAKAAUAAAABAAEAAwAIAAIAAAABAAIAAwAIAAIAAAABAAMAAwAIAAIAAAABAAQAAwAIAAIAAAABAAUAAwAIAAIAAAABAAYAAwAJAAIAAAABAAcAAwAHAAIAAAABAAgAAwAHAAIAAAABAAkAAwAHAAIAAAABAAoAAwAHAAIAAAABAAsAAwAHAAIAAAABAAwAAwAKAAUAAAACAAEAAwAIAAIAAAACAAIAAwAIAAIAAAACAAMAAwAIAAIAAAACAAQAAwAIAAIAAAACAAUAAwAIAAIAAAACAAYAAwAJAAIAAAACAAcAAwAHAAIAAAACAAgAAwAHAAIAAAACAAkAAwAHAAIAAAACAAoAAwAHAAIAAAACAAsAAwAHAAIAAAACAAwAAwAKAAUAAAADAAEAAwAIAAIAAAADAAIAAwAIAAIAAAADAAMAAwAIAAIAAAADAAQAAwAIAAIAAAADAAUAAwAIAAIAAAADAAYAAwAJAAIAAAADAAcAAwAHAAIAAAADAAgAAwAHAAIAAAADAAkAAwAHAAIAAAADAAsAAwAHAAIAAAADAAwAAwAKAAUAAAAEAAEAAwAIAAIAAAAEAAIAAwAIAAIAAAAEAAMAAwAIAAIAAAAEAAQAAwAIAAIAAAAEAAUAAwAIAAIAAAAEAAYAAwAJAAIAAAAEAAcAAwAHAAIAAAAEAAgAAwAHAAIAAAAEAAkAAwAHAAIAAAAEAAoAAwAHAAIAAAAEAAsAAwAHAAIAAAAEAAwAAwAKAAUAAAAFAAEAAwAIAAIAAAAFAAIAAwAIAAIAAAAFAAMAAwAIAAIAAAAFAAQAAwAIAAIAAAAFAAUAAwAIAAIAAAAFAAYAAwAJAAIAAAAFAAcAAwAHAAIAAAAFAAgAAwAHAAIAAAAFAAkAAwAHAAIAAAAFAAoAAwAHAAIAAAAFAAsAAwAHAAIAAAAFAAwAAwAKAAUAAAAGAAEAAwAIAAIAAAAGAAIAAwAIAAIAAAAGAAMAAwAIAAIAAAAGAAQAAwAIAAIAAAAGAAUAAwAIAAIAAAAGAAYAAwAJAAIAAAAGAAcAAwAHAAIAAAAGAAgAAwAHAAIAAAAGAAkAAwAHAAIAAAAGAAoAAwAHAAIAAAAGAAsAAwAHAAIAAAAGAAwAAwAKAAUAAAAHAAEAAwAIAAIAAAAHAAIAAwAIAAIAAAAHAAMAAwAIAAIAAAAHAAQAAwAIAAIAAAAHAAUAAwAIAAIAAAAHAAYAAwAJAAIAAAAHAAcAAwAHAAIAAAAHAAgAAwAHAAIAAAAHAAkAAwAHAAIAAAAHAAoAAwAHAAIAAAAHAAsAAwAHAAIAAAAHAAwAAwAKAAUAAAAIAAEAAwAIAAIAAAAIAAIAAwAIAAIAAAAIAAMAAwAIAAIAAAAIAAQAAwAIAAIAAAAIAAUAAwAIAAIAAAAIAAYAAwAJAAIAAAAIAAcAAwAHAAIAAAAIAAgAAwAHAAIAAAAIAAkAAwAHAAIAAAAIAAoAAwAHAAIAAAAIAAsAAwAHAAIAAAAIAAwAAwAKAAUAAAAJAAEAAwAIAAIAAAAJAAIAAwAIAAIAAAAJAAMAAwAIAAIAAAAJAAQAAwAIAAIAAAAJAAUAAwAIAAIAAAAJAAYAAwAJAAIAAAAJAAcAAwAHAAIAAAAJAAgAAwAHAAIAAAAJAAkAAwAHAAIAAAAJAAoAAwAHAAIAAAAJAAsAAwAHAAIAAAAJAAwAAwAKAAUAAAAKAAEAAwAIAAIAAAAKAAIAAwAIAAIAAAAKAAMAAwAIAAIAAAAKAAQAAwAIAAIAAAAKAAUAAwAIAAIAAAAKAAYAAwAJAAIAAAAKAAcAAwAHAAIAAAAKAAgAAwAHAAIAAAAKAAkAAwAHAAIAAAAKAAoAAwAHAAIAAAAKAAsAAwAHAAIAAAAKAAwAAwAKAAUAAAAAAAAAAwALAAUAAAABAAAAAwALAAUAAAACAAAAAwALAAUAAAADAAAAAwALAAUAAAAEAAAAAwALAAUAAAAFAAAAAwALAAUAAAAGAAAAAwALAAUAAAAHAAAAAwALAAUAAAAIAAAAAwALAAUAAAAJAAAAAwALAAUAAAAKAAAAAwALAAUAAAAMAAAAAwALAAUAAAAMAAEAAwAIAAIAAAAMAAIAAwAIAAIAAAAMAAMAAwAIAAIAAAAMAAQAAwAIAAIAAAAMAAUAAwAIAAIAAAAMAAYAAwAJAAIAAAAMAAcAAwAHAAIAAAAMAAgAAwAHAAIAAAAMAAkAAwAHAAIAAAAMAAoAAwAHAAIAAAAMAAsAAwAHAAIAAAAMAAwAAwAKAAUAAAALAAAAAwALAAUAAAALAAEAAwAIAAIAAAALAAIAAwAIAAIAAAALAAMAAwAIAAIAAAALAAQAAwAIAAIAAAALAAUAAwAIAAIAAAALAAYAAwAJAAIAAAALAAcAAwAHAAIAAAALAAgAAwAHAAIAAAALAAkAAwAHAAIAAAALAAoAAwAHAAIAAAALAAsAAwAHAAIAAAALAAwAAwAKAAUAAAADAAoAAwAHAAIAAAA=")
 tile_set = ExtResource("3_rtwur")
+
+[node name="Stun" type="Node2D" parent="TileMap"]
+y_sort_enabled = true
 
 [node name="Debug" type="Node2D" parent="TileMap"]
 y_sort_enabled = true
@@ -181,7 +185,6 @@ layout_mode = 2
 text = "Retour"
 
 [node name="HelpPanel" type="TextureRect" parent="."]
-visible = false
 z_index = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -210,23 +213,30 @@ vertical_alignment = 1
 [node name="BtnRetour" type="Button" parent="HelpPanel"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
-offset_left = -1.5258789e-05
-offset_top = 415.2423
-offset_right = 457.67017
-offset_bottom = 446.2423
+offset_left = -1.52588e-05
+offset_top = 415.242
+offset_right = 457.67
+offset_bottom = 446.242
 text = "Retour"
 
 [node name="GridContainer" type="GridContainer" parent="HelpPanel"]
-layout_mode = 0
-offset_left = 47.0
-offset_top = 142.73943
-offset_right = 438.0
-offset_bottom = 329.0
-theme_override_constants/v_separation = 59
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.5
+offset_top = -66.6355
+offset_right = 195.5
+offset_bottom = 236.365
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/v_separation = 29
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HelpPanel/GridContainer"]
 layout_mode = 2
-text = "Le but du jeu est de battre une IA à un quoridor revisité. Il suffis d'arriver du coté de son adversaire pour gagner tout en le bloquant."
+text = "Le but du jeu est de battre une IA à un quoridor revisité. Il suffis d'arriver du coté de son adversaire pour gagner tout en le bloquant avec des murs."
 fit_content = true
 
 [node name="BoxContainer" type="HBoxContainer" parent="HelpPanel/GridContainer"]
@@ -252,6 +262,19 @@ expand_mode = 3
 [node name="Label" type="Label" parent="HelpPanel/GridContainer/HBoxContainer"]
 layout_mode = 2
 text = "Poser des cubes en cliquant sur les cases"
+
+[node name="BoxContainer2" type="HBoxContainer" parent="HelpPanel/GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HelpPanel/GridContainer/BoxContainer2"]
+layout_mode = 2
+texture = ExtResource("10_v3b0u")
+expand_mode = 3
+
+[node name="Label2" type="Label" parent="HelpPanel/GridContainer/BoxContainer2"]
+layout_mode = 2
+text = "Les cases oranges sont des cases de passe tour"
+horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="."]
 offset_left = -1148.0

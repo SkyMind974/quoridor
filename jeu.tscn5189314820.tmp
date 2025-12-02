@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://bw3kevldii35p"]
+[gd_scene load_steps=25 format=4 uid="uid://bw3kevldii35p"]
 
 [ext_resource type="TileSet" uid="uid://buxa31rpwb4wq" path="res://Map.tres" id="1_bc8hh"]
 [ext_resource type="Script" uid="uid://x3r25swvgkba" path="res://script/board.gd" id="1_h8l20"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://d1aveuwisg1qt" path="res://Menu/clavier.png" id="10_o5b5a"]
 [ext_resource type="Script" uid="uid://c0l0gqe3ry5uh" path="res://menu_echap.gd" id="10_poe8c"]
 [ext_resource type="Texture2D" uid="uid://yjdur02a7yi1" path="res://kenney_isometric-blocks/PNG/Abstract tiles/abstractTile_09.png" id="11_poe8c"]
-[ext_resource type="Texture2D" uid="uid://xmw0sawrhh8y" path="res://kenney_isometric-blocks/PNG/Voxel tiles/voxelTile_01.png" id="12_v5usu"]
 
 [sub_resource type="Gradient" id="Gradient_8qsxd"]
 offsets = PackedFloat32Array(0)
@@ -79,13 +78,13 @@ position = Vector2(-53, 11)
 tile_map_data = PackedByteArray("AAAAAAEAAwAIAAIAAAAAAAIAAwAIAAIAAAAAAAMAAwAIAAIAAAAAAAQAAwAIAAIAAAAAAAUAAwAIAAIAAAAAAAYAAwAJAAIAAAAAAAcAAwAHAAIAAAAAAAgAAwAHAAIAAAAAAAkAAwAHAAIAAAAAAAoAAwAHAAIAAAAAAAsAAwAHAAIAAAAAAAwAAwAKAAUAAAABAAEAAwAIAAIAAAABAAIAAwAIAAIAAAABAAMAAwAIAAIAAAABAAQAAwAIAAIAAAABAAUAAwAIAAIAAAABAAYAAwAJAAIAAAABAAcAAwAHAAIAAAABAAgAAwAHAAIAAAABAAkAAwAHAAIAAAABAAoAAwAHAAIAAAABAAsAAwAHAAIAAAABAAwAAwAKAAUAAAACAAEAAwAIAAIAAAACAAIAAwAIAAIAAAACAAMAAwAIAAIAAAACAAQAAwAIAAIAAAACAAUAAwAIAAIAAAACAAYAAwAJAAIAAAACAAcAAwAHAAIAAAACAAgAAwAHAAIAAAACAAkAAwAHAAIAAAACAAoAAwAHAAIAAAACAAsAAwAHAAIAAAACAAwAAwAKAAUAAAADAAEAAwAIAAIAAAADAAIAAwAIAAIAAAADAAMAAwAIAAIAAAADAAQAAwAIAAIAAAADAAUAAwAIAAIAAAADAAYAAwAJAAIAAAADAAcAAwAHAAIAAAADAAgAAwAHAAIAAAADAAkAAwAHAAIAAAADAAsAAwAHAAIAAAADAAwAAwAKAAUAAAAEAAEAAwAIAAIAAAAEAAIAAwAIAAIAAAAEAAMAAwAIAAIAAAAEAAQAAwAIAAIAAAAEAAUAAwAIAAIAAAAEAAYAAwAJAAIAAAAEAAcAAwAHAAIAAAAEAAgAAwAHAAIAAAAEAAkAAwAHAAIAAAAEAAoAAwAHAAIAAAAEAAsAAwAHAAIAAAAEAAwAAwAKAAUAAAAFAAEAAwAIAAIAAAAFAAIAAwAIAAIAAAAFAAMAAwAIAAIAAAAFAAQAAwAIAAIAAAAFAAUAAwAIAAIAAAAFAAYAAwAJAAIAAAAFAAcAAwAHAAIAAAAFAAgAAwAHAAIAAAAFAAkAAwAHAAIAAAAFAAoAAwAHAAIAAAAFAAsAAwAHAAIAAAAFAAwAAwAKAAUAAAAGAAEAAwAIAAIAAAAGAAIAAwAIAAIAAAAGAAMAAwAIAAIAAAAGAAQAAwAIAAIAAAAGAAUAAwAIAAIAAAAGAAYAAwAJAAIAAAAGAAcAAwAHAAIAAAAGAAgAAwAHAAIAAAAGAAkAAwAHAAIAAAAGAAoAAwAHAAIAAAAGAAsAAwAHAAIAAAAGAAwAAwAKAAUAAAAHAAEAAwAIAAIAAAAHAAIAAwAIAAIAAAAHAAMAAwAIAAIAAAAHAAQAAwAIAAIAAAAHAAUAAwAIAAIAAAAHAAYAAwAJAAIAAAAHAAcAAwAHAAIAAAAHAAgAAwAHAAIAAAAHAAkAAwAHAAIAAAAHAAoAAwAHAAIAAAAHAAsAAwAHAAIAAAAHAAwAAwAKAAUAAAAIAAEAAwAIAAIAAAAIAAIAAwAIAAIAAAAIAAMAAwAIAAIAAAAIAAQAAwAIAAIAAAAIAAUAAwAIAAIAAAAIAAYAAwAJAAIAAAAIAAcAAwAHAAIAAAAIAAgAAwAHAAIAAAAIAAkAAwAHAAIAAAAIAAoAAwAHAAIAAAAIAAsAAwAHAAIAAAAIAAwAAwAKAAUAAAAJAAEAAwAIAAIAAAAJAAIAAwAIAAIAAAAJAAMAAwAIAAIAAAAJAAQAAwAIAAIAAAAJAAUAAwAIAAIAAAAJAAYAAwAJAAIAAAAJAAcAAwAHAAIAAAAJAAgAAwAHAAIAAAAJAAkAAwAHAAIAAAAJAAoAAwAHAAIAAAAJAAsAAwAHAAIAAAAJAAwAAwAKAAUAAAAKAAEAAwAIAAIAAAAKAAIAAwAIAAIAAAAKAAMAAwAIAAIAAAAKAAQAAwAIAAIAAAAKAAUAAwAIAAIAAAAKAAYAAwAJAAIAAAAKAAcAAwAHAAIAAAAKAAgAAwAHAAIAAAAKAAkAAwAHAAIAAAAKAAoAAwAHAAIAAAAKAAsAAwAHAAIAAAAKAAwAAwAKAAUAAAAEAAAAAwALAAUAAAAFAAAAAwALAAUAAAAGAAAAAwALAAUAAAAHAAAAAwALAAUAAAAIAAAAAwALAAUAAAAJAAAAAwALAAUAAAAKAAAAAwALAAUAAAAMAAAAAwALAAUAAAAMAAEAAwAIAAIAAAAMAAIAAwAIAAIAAAAMAAMAAwAIAAIAAAAMAAQAAwAIAAIAAAAMAAUAAwAIAAIAAAAMAAYAAwAJAAIAAAAMAAcAAwAHAAIAAAAMAAgAAwAHAAIAAAAMAAkAAwAHAAIAAAAMAAoAAwAHAAIAAAAMAAsAAwAHAAIAAAAMAAwAAwAKAAUAAAALAAAAAwALAAUAAAALAAEAAwAIAAIAAAALAAIAAwAIAAIAAAALAAMAAwAIAAIAAAALAAQAAwAIAAIAAAALAAUAAwAIAAIAAAALAAYAAwAJAAIAAAALAAcAAwAHAAIAAAALAAgAAwAHAAIAAAALAAkAAwAHAAIAAAALAAoAAwAHAAIAAAALAAsAAwAHAAIAAAALAAwAAwAKAAUAAAADAAoAAwAHAAIAAAAAAAAAAwALAAUAAAABAAAAAwALAAUAAAACAAAAAwALAAUAAAADAAAAAwALAAUAAAA=")
 tile_set = ExtResource("1_bc8hh")
 
-[node name="Stun" type="Node2D" parent="TileMap"]
-y_sort_enabled = true
-
 [node name="Debug" type="Node2D" parent="TileMap"]
 y_sort_enabled = true
 
 [node name="Walls" type="Node2D" parent="TileMap"]
+y_sort_enabled = true
+
+[node name="Stun" type="Node2D" parent="TileMap"]
 y_sort_enabled = true
 
 [node name="IA" type="Sprite2D" parent="TileMap"]
@@ -217,23 +216,16 @@ offset_bottom = 446.242
 text = "Retour"
 
 [node name="GridContainer" type="GridContainer" parent="UI/HelpPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -195.5
-offset_top = -66.6355
-offset_right = 195.5
-offset_bottom = 236.365
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/v_separation = 29
+layout_mode = 0
+offset_left = 47.0
+offset_top = 142.739
+offset_right = 438.0
+offset_bottom = 329.0
+theme_override_constants/v_separation = 59
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/HelpPanel/GridContainer"]
 layout_mode = 2
-text = "Le but du jeu est de battre une IA à un quoridor revisité. Il suffis d'arriver du coté de son adversaire pour gagner tout en le bloquant avec des murs."
+text = "Le but du jeu est de battre une IA à un quoridor revisité. Il suffis d'arriver du coté de son adversaire pour gagner tout en le bloquant."
 fit_content = true
 
 [node name="BoxContainer" type="HBoxContainer" parent="UI/HelpPanel/GridContainer"]
@@ -260,32 +252,10 @@ expand_mode = 3
 layout_mode = 2
 text = "Poser des cubes en cliquant sur les cases"
 
-[node name="BoxContainer2" type="HBoxContainer" parent="UI/HelpPanel/GridContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="UI/HelpPanel/GridContainer/BoxContainer2"]
-layout_mode = 2
-texture = ExtResource("12_v5usu")
-expand_mode = 3
-
-[node name="Label2" type="Label" parent="UI/HelpPanel/GridContainer/BoxContainer2"]
-layout_mode = 2
-text = "Les cases oranges sont des cases de passe tour"
-horizontal_alignment = 1
-
 [node name="Fond" type="TextureRect" parent="UI"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -576.5
-offset_top = -324.0
-offset_right = 576.5
-offset_bottom = 324.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
+visible = false
+offset_right = 1153.0
+offset_bottom = 648.0
 texture = SubResource("GradientTexture1D_0sqbu")
 
 [node name="TextureRect" type="TextureRect" parent="UI"]
@@ -437,26 +407,19 @@ text = "Menu Principal"
 
 [node name="ButtonTitle" type="Label" parent="UI"]
 offset_left = 22.0
-offset_top = 34.0
+offset_top = 10.0
 offset_right = 127.0
-offset_bottom = 57.0
+offset_bottom = 33.0
 text = "Debug"
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="CheckButton" parent="UI"]
-offset_left = 70.0
-offset_top = 36.0
-offset_right = 114.0
-offset_bottom = 60.0
+offset_left = 80.0
+offset_top = 11.0
+offset_right = 124.0
+offset_bottom = 35.0
 button_pressed = true
 metadata/_edit_use_anchors_ = true
-
-[node name="TurnLabel" type="Label" parent="UI"]
-offset_left = 22.0
-offset_top = 11.0
-offset_right = 62.0
-offset_bottom = 34.0
-text = "Tour : 1"
 
 [connection signal="pressed" from="UI/MenuPanel/VBoxContainer/Play" to="UI/MenuPanel" method="_on_play_pressed"]
 [connection signal="pressed" from="UI/MenuPanel/VBoxContainer/Aide" to="UI/MenuPanel" method="_on_aide_pressed"]
