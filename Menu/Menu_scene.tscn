@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=4 uid="uid://d0ntdpb3g7f5f"]
 
-[ext_resource type="Script" uid="uid://x18hdi0qxmqt" path="res://Menu/menu_scene.gd" id="1_smcpk"]
+[ext_resource type="Script" uid="uid://dbut4fgsaoar2" path="res://script/menu_scene.gd" id="1_v3b0u"]
 [ext_resource type="TileSet" uid="uid://buxa31rpwb4wq" path="res://Map.tres" id="3_rtwur"]
 [ext_resource type="Texture2D" uid="uid://72hb8yu7vsdk" path="res://kenney_isometric-blocks/PNG/Abstract tiles/abstractTile_17.png" id="4_tgit6"]
 [ext_resource type="Script" uid="uid://5kyvj1u6qni7" path="res://script/menuwalk.gd" id="5_wnh5h"]
@@ -23,7 +23,7 @@ font = ExtResource("7_bo1wi")
 font_size = 44
 
 [node name="MenuScene" type="Node2D"]
-script = ExtResource("1_smcpk")
+script = ExtResource("1_v3b0u")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1, 414)
@@ -41,7 +41,6 @@ tile_map_data = PackedByteArray("AAAAAAEAAwAIAAIAAAAAAAIAAwAIAAIAAAAAAAMAAwAIAAI
 tile_set = ExtResource("3_rtwur")
 
 [node name="Stun" type="Node2D" parent="TileMap"]
-y_sort_enabled = true
 
 [node name="Debug" type="Node2D" parent="TileMap"]
 y_sort_enabled = true
@@ -124,7 +123,6 @@ layout_mode = 2
 text = "Quitter"
 
 [node name="ModePanel" type="TextureRect" parent="."]
-visible = false
 z_index = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -175,10 +173,10 @@ text = "Dijkstra"
 layout_mode = 2
 text = "A*"
 
-[node name="BtnAStar2" type="Button" parent="ModePanel/VBoxContainer/VBoxContainer2"]
+[node name="Btn1vs1" type="Button" parent="ModePanel/VBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(65.075, 0)
 layout_mode = 2
-text = "Coop"
+text = "1 vs 1"
 
 [node name="BtnRetour" type="Button" parent="ModePanel/VBoxContainer"]
 layout_mode = 2
@@ -211,6 +209,7 @@ label_settings = SubResource("LabelSettings_l7ps2")
 vertical_alignment = 1
 
 [node name="BtnRetour" type="Button" parent="HelpPanel"]
+layout_mode = 0
 offset_top = 415.488
 offset_right = 458.0
 offset_bottom = 446.488
@@ -224,16 +223,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -195.0
-offset_top = -67.0
+offset_top = -82.0015
 offset_right = 196.0
-offset_bottom = 181.0
+offset_bottom = 173.998
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/v_separation = 29
+theme_override_constants/v_separation = 24
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HelpPanel/GridContainer"]
 layout_mode = 2
-text = "Le but du jeu est de battre une IA à un quoridor revisité. Il suffis d'arriver du coté de son adversaire pour gagner tout en le bloquant avec des murs."
+text = "Le but du jeu est de battre une IA à un quoridor revisité. Il suffit d'arriver du côté de son adversaire pour gagner. À chaque tour, vous avez le choix de soit placer un mur, soit de bouger. Il en est de même pour l'IA."
 fit_content = true
 
 [node name="BoxContainer" type="HBoxContainer" parent="HelpPanel/GridContainer"]
@@ -244,9 +243,18 @@ layout_mode = 2
 texture = ExtResource("8_ltt11")
 expand_mode = 3
 
-[node name="Label2" type="Label" parent="HelpPanel/GridContainer/BoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HelpPanel/GridContainer/BoxContainer"]
 layout_mode = 2
-text = "Déplacer vous avec les flèches directionnelles"
+
+[node name="Label3" type="Label" parent="HelpPanel/GridContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Déplacez vous avec les touches ZQSD"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="HelpPanel/GridContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Le Player 2 en 1v1 utilise les flèches"
+vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HelpPanel/GridContainer"]
 layout_mode = 2
@@ -258,7 +266,7 @@ expand_mode = 3
 
 [node name="Label" type="Label" parent="HelpPanel/GridContainer/HBoxContainer"]
 layout_mode = 2
-text = "Poser des cubes en cliquant sur les cases"
+text = "Poser des murs en cliquant sur les cases"
 
 [node name="BoxContainer2" type="HBoxContainer" parent="HelpPanel/GridContainer"]
 layout_mode = 2
@@ -311,7 +319,6 @@ text = "Dijkstra:"
 [node name="Score1" type="Label" parent="BoxContainer"]
 layout_mode = 2
 
-[connection signal="pressed" from="MenuPanel/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MenuPanel/VBoxContainer/Play" to="MenuPanel" method="_on_play_pressed"]
 [connection signal="pressed" from="MenuPanel/VBoxContainer/Aide" to="MenuPanel" method="_on_aide_pressed"]
 [connection signal="pressed" from="MenuPanel/VBoxContainer/Quitter" to="." method="_on_quitter_pressed"]
@@ -320,8 +327,7 @@ layout_mode = 2
 [connection signal="pressed" from="ModePanel/VBoxContainer/VBoxContainer2/BtnDijkstra" to="MenuPanel" method="_on_btn_dijkstra_pressed"]
 [connection signal="pressed" from="ModePanel/VBoxContainer/VBoxContainer2/BtnAStar" to="." method="_on_btn_a_star_pressed"]
 [connection signal="pressed" from="ModePanel/VBoxContainer/VBoxContainer2/BtnAStar" to="MenuPanel" method="_on_btn_a_star_pressed"]
-[connection signal="pressed" from="ModePanel/VBoxContainer/VBoxContainer2/BtnAStar2" to="." method="_on_btn_a_star_pressed"]
-[connection signal="pressed" from="ModePanel/VBoxContainer/VBoxContainer2/BtnAStar2" to="MenuPanel" method="_on_btn_a_star_pressed"]
+[connection signal="pressed" from="ModePanel/VBoxContainer/VBoxContainer2/Btn1vs1" to="MenuPanel" method="_on_btn_1_vs_1_pressed"]
 [connection signal="pressed" from="ModePanel/VBoxContainer/BtnRetour" to="." method="_on_btn_retour_pressed"]
 [connection signal="pressed" from="ModePanel/VBoxContainer/BtnRetour" to="MenuPanel" method="_on_btn_retour_pressed"]
 [connection signal="pressed" from="HelpPanel/BtnRetour" to="." method="_on_btn_retour_pressed"]

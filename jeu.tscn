@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://bw3kevldii35p"]
+[gd_scene load_steps=28 format=4 uid="uid://bw3kevldii35p"]
 
 [ext_resource type="TileSet" uid="uid://buxa31rpwb4wq" path="res://Map.tres" id="1_bc8hh"]
 [ext_resource type="Script" uid="uid://x3r25swvgkba" path="res://script/board.gd" id="1_h8l20"]
@@ -7,13 +7,63 @@
 [ext_resource type="Script" uid="uid://b87v70jn4geys" path="res://script/ia.gd" id="4_incv7"]
 [ext_resource type="Texture2D" uid="uid://bsaq54t5vkl75" path="res://notif.png" id="5_s1xry"]
 [ext_resource type="Script" uid="uid://d0swcefh28u6a" path="res://script/player.gd" id="5_xsp2q"]
-[ext_resource type="Texture2D" uid="uid://bv1jnc2i4sv2x" path="res://victoire.png" id="6_0yqk5"]
 [ext_resource type="FontFile" uid="uid://d1xah8tntvofd" path="res://Walton.otf" id="6_aw23n"]
-[ext_resource type="Texture2D" uid="uid://dcpncmvj0g7hv" path="res://kenney_isometric-blocks/PNG/Abstract tiles/abstractTile_08.png" id="7_v5usu"]
+[ext_resource type="Texture2D" uid="uid://dgjmvdeo6v50q" path="res://image-removebg-preview (6).png" id="7_v5usu"]
 [ext_resource type="Texture2D" uid="uid://d1aveuwisg1qt" path="res://Menu/clavier.png" id="10_o5b5a"]
 [ext_resource type="Script" uid="uid://c0l0gqe3ry5uh" path="res://Menu/menu_echap.gd" id="10_poe8c"]
 [ext_resource type="Texture2D" uid="uid://yjdur02a7yi1" path="res://kenney_isometric-blocks/PNG/Abstract tiles/abstractTile_09.png" id="11_poe8c"]
 [ext_resource type="Texture2D" uid="uid://xmw0sawrhh8y" path="res://kenney_isometric-blocks/PNG/Voxel tiles/voxelTile_01.png" id="12_v5usu"]
+
+[sub_resource type="Animation" id="Animation_tho86"]
+resource_name = "Arrow"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-1.35, -124.797), Vector2(-1.35, -90), Vector2(-1.35, -124.797)]
+}
+
+[sub_resource type="Animation" id="Animation_jinmt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1.35, -124.797)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jinmt"]
+_data = {
+&"Arrow": SubResource("Animation_tho86"),
+&"RESET": SubResource("Animation_jinmt")
+}
+
+[sub_resource type="Gradient" id="Gradient_v3b0u"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.666667)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8qsxd"]
+gradient = SubResource("Gradient_v3b0u")
+
+[sub_resource type="LabelSettings" id="LabelSettings_v5usu"]
+font = ExtResource("6_aw23n")
+font_size = 44
+
+[sub_resource type="LabelSettings" id="LabelSettings_0sqbu"]
+font = ExtResource("6_aw23n")
 
 [sub_resource type="Gradient" id="Gradient_8qsxd"]
 offsets = PackedFloat32Array(0)
@@ -26,26 +76,12 @@ gradient = SubResource("Gradient_8qsxd")
 font = ExtResource("6_aw23n")
 font_size = 44
 
-[sub_resource type="Gradient" id="Gradient_v3b0u"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 0, 0, 0.592157)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_8qsxd"]
-gradient = SubResource("Gradient_v3b0u")
-
-[sub_resource type="LabelSettings" id="LabelSettings_v5usu"]
-font = ExtResource("6_aw23n")
-font_size = 44
-
 [sub_resource type="Gradient" id="Gradient_aw23n"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(0, 0, 0, 0.368627)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_0sqbu"]
 gradient = SubResource("Gradient_aw23n")
-
-[sub_resource type="LabelSettings" id="LabelSettings_0sqbu"]
-font = ExtResource("6_aw23n")
 
 [sub_resource type="LabelSettings" id="LabelSettings_hp17q"]
 font = ExtResource("6_aw23n")
@@ -54,7 +90,7 @@ font_color = Color(0.760784, 0.6, 0.396078, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_aw23n"]
 font = ExtResource("6_aw23n")
-font_size = 69
+font_size = 40
 font_color = Color(0.794399, 3.22476e-06, 9.62615e-07, 1)
 
 [node name="Node2D" type="Node2D"]
@@ -80,7 +116,6 @@ tile_map_data = PackedByteArray("AAAAAAEAAwAIAAIAAAAAAAIAAwAIAAIAAAAAAAMAAwAIAAI
 tile_set = ExtResource("1_bc8hh")
 
 [node name="Stun" type="Node2D" parent="TileMap"]
-y_sort_enabled = true
 
 [node name="Debug" type="Node2D" parent="TileMap"]
 y_sort_enabled = true
@@ -97,6 +132,19 @@ offset = Vector2(0, -25.285)
 script = ExtResource("4_incv7")
 board_path = NodePath("../..")
 
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/IA"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-1.35, -124.797)
+rotation = 1.57079
+scale = Vector2(0.323619, 0.323619)
+texture = ExtResource("7_v5usu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TileMap/IA"]
+libraries = {
+&"": SubResource("AnimationLibrary_jinmt")
+}
+
 [node name="Player" type="Sprite2D" parent="TileMap"]
 y_sort_enabled = true
 position = Vector2(-330, 615)
@@ -109,74 +157,36 @@ board_path = NodePath("../..")
 [node name="Sprite2D" type="Sprite2D" parent="TileMap/Player"]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(-1.34952, -72.8683)
-scale = Vector2(0.575392, 0.575392)
+position = Vector2(-1.35, -124.797)
+rotation = 1.57079
+scale = Vector2(0.323619, 0.323619)
 texture = ExtResource("7_v5usu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TileMap/Player"]
+libraries = {
+&"": SubResource("AnimationLibrary_jinmt")
+}
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="MenuPanel" type="TextureRect" parent="UI" node_paths=PackedStringArray("main_panel", "help_panel")]
+[node name="ButtonTitle" type="Label" parent="UI"]
+offset_left = 22.0
+offset_top = 34.0
+offset_right = 127.0
+offset_bottom = 57.0
+text = "Debug"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="CheckButton" parent="UI"]
+offset_left = 70.0
+offset_top = 36.0
+offset_right = 114.0
+offset_bottom = 60.0
+button_pressed = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Help" type="TextureRect" parent="UI"]
 visible = false
-z_index = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -198.0
-offset_top = 93.0
-offset_right = 260.0
-offset_bottom = 539.0
-grow_horizontal = 2
-scale = Vector2(0.863031, 0.817149)
-texture = SubResource("GradientTexture1D_v5usu")
-script = ExtResource("10_poe8c")
-main_panel = NodePath(".")
-help_panel = NodePath("../HelpPanel")
-
-[node name="Label" type="Label" parent="UI/MenuPanel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -105.5
-offset_top = 31.0
-offset_right = 105.5
-offset_bottom = 76.0
-grow_horizontal = 2
-text = "DIJKSTRA*"
-label_settings = SubResource("LabelSettings_swlgb")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MenuPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -153.0
-offset_top = -120.204
-offset_right = 153.0
-offset_bottom = 195.796
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 64
-
-[node name="Play" type="Button" parent="UI/MenuPanel/VBoxContainer"]
-layout_mode = 2
-text = "Play"
-
-[node name="Aide" type="Button" parent="UI/MenuPanel/VBoxContainer"]
-layout_mode = 2
-text = "Aide"
-
-[node name="Menu" type="Button" parent="UI/MenuPanel/VBoxContainer"]
-layout_mode = 2
-text = "Menu Principal"
-
-[node name="Quitter" type="Button" parent="UI/MenuPanel/VBoxContainer"]
-layout_mode = 2
-text = "Quitter"
-
-[node name="HelpPanel" type="TextureRect" parent="UI"]
 z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -185,14 +195,14 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -198.0
 offset_top = -231.0
-offset_right = 260.0
+offset_right = 263.0
 offset_bottom = 215.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.857687, 0.818074)
 texture = SubResource("GradientTexture1D_8qsxd")
 
-[node name="Label2" type="Label" parent="UI/HelpPanel"]
+[node name="Label2" type="Label" parent="UI/Help"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -206,7 +216,7 @@ text = "Aide"
 label_settings = SubResource("LabelSettings_v5usu")
 vertical_alignment = 1
 
-[node name="BtnRetour" type="Button" parent="UI/HelpPanel"]
+[node name="BtnRetour" type="Button" parent="UI/Help"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
 offset_left = -1.52588e-05
@@ -215,7 +225,7 @@ offset_right = 457.67
 offset_bottom = 446.242
 text = "Retour"
 
-[node name="GridContainer" type="GridContainer" parent="UI/HelpPanel"]
+[node name="GridContainer" type="GridContainer" parent="UI/Help"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -223,80 +233,90 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -195.0
-offset_top = -67.0
+offset_top = -82.0015
 offset_right = 196.0
-offset_bottom = 181.0
+offset_bottom = 173.998
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/v_separation = 29
+theme_override_constants/v_separation = 24
 
-[node name="RichTextLabel" type="RichTextLabel" parent="UI/HelpPanel/GridContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Help/GridContainer"]
 layout_mode = 2
-text = "Le but du jeu est de battre une IA à un quoridor revisité. Il suffis d'arriver du coté de son adversaire pour gagner tout en le bloquant avec des murs."
+text = "Le but du jeu est de battre une IA à un quoridor revisité. Il suffit d'arriver du côté de son adversaire pour gagner. À chaque tour, vous avez le choix de soit placer un mur, soit de bouger. Il en est de même pour l'IA."
 fit_content = true
 
-[node name="BoxContainer" type="HBoxContainer" parent="UI/HelpPanel/GridContainer"]
+[node name="BoxContainer" type="HBoxContainer" parent="UI/Help/GridContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="UI/HelpPanel/GridContainer/BoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="UI/Help/GridContainer/BoxContainer"]
 layout_mode = 2
 texture = ExtResource("10_o5b5a")
 expand_mode = 3
 
-[node name="Label2" type="Label" parent="UI/HelpPanel/GridContainer/BoxContainer"]
-layout_mode = 2
-text = "Déplacer vous avec les flèches directionnelles"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/HelpPanel/GridContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Help/GridContainer/BoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="UI/HelpPanel/GridContainer/HBoxContainer"]
+[node name="Label3" type="Label" parent="UI/Help/GridContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Déplacez vous avec les touches ZQSD"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="UI/Help/GridContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Le Player 2 en 1v1 utilise les flèches"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Help/GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/Help/GridContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("11_poe8c")
 expand_mode = 3
 
-[node name="Label" type="Label" parent="UI/HelpPanel/GridContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="UI/Help/GridContainer/HBoxContainer"]
 layout_mode = 2
-text = "Poser des cubes en cliquant sur les cases"
+text = "Poser des murs en cliquant sur les cases"
 
-[node name="BoxContainer2" type="HBoxContainer" parent="UI/HelpPanel/GridContainer"]
+[node name="BoxContainer2" type="HBoxContainer" parent="UI/Help/GridContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="UI/HelpPanel/GridContainer/BoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="UI/Help/GridContainer/BoxContainer2"]
 layout_mode = 2
 texture = ExtResource("12_v5usu")
 expand_mode = 3
 
-[node name="Label2" type="Label" parent="UI/HelpPanel/GridContainer/BoxContainer2"]
+[node name="Label2" type="Label" parent="UI/Help/GridContainer/BoxContainer2"]
 layout_mode = 2
 text = "Les cases oranges sont des cases de passe tour"
 horizontal_alignment = 1
 
-[node name="Fond" type="TextureRect" parent="UI"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -576.5
-offset_top = -324.0
-offset_right = 576.5
-offset_bottom = 324.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-texture = SubResource("GradientTexture1D_0sqbu")
+[node name="Button2" type="Button" parent="UI"]
+offset_left = 1094.0
+offset_top = 617.0
+offset_right = 1153.0
+offset_bottom = 648.0
+text = "Aide"
+
+[node name="TurnLabel" type="Label" parent="UI"]
+offset_left = 22.0
+offset_top = 11.0
+offset_right = 80.0
+offset_bottom = 34.0
+text = "Tour : 1"
 
 [node name="TextureRect" type="TextureRect" parent="UI"]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -148.0
+offset_left = -164.0
 offset_top = 49.0
-offset_right = 146.0
+offset_right = 162.0
 offset_bottom = 113.0
 grow_horizontal = 2
 size_flags_horizontal = 4
+mouse_filter = 0
 texture = ExtResource("5_s1xry")
 
 [node name="Label" type="Label" parent="UI/TextureRect"]
@@ -315,69 +335,202 @@ grow_vertical = 2
 text = "Test"
 label_settings = SubResource("LabelSettings_0sqbu")
 
-[node name="Victoire" type="TextureRect" parent="UI"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -227.0
-offset_top = -76.0
-offset_right = 450.0
-offset_bottom = 274.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.674189, 0.445896)
-size_flags_horizontal = 4
-texture = ExtResource("6_0yqk5")
+[node name="Menu" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
 
-[node name="Label" type="Label" parent="UI/Victoire"]
+[node name="MenuPanel" type="TextureRect" parent="UI/Menu" node_paths=PackedStringArray("main_panel", "help_panel", "help", "Menu")]
+z_index = 1
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -163.475
-offset_top = 9.0
-offset_right = 0.525085
-offset_bottom = 50.0
+offset_left = -198.0
+offset_top = 93.0
+offset_right = 260.0
+offset_bottom = 539.0
 grow_horizontal = 2
-scale = Vector2(1.90076, 2.51075)
-text = "VICTORY"
-label_settings = SubResource("LabelSettings_hp17q")
+scale = Vector2(0.863031, 0.817149)
+mouse_filter = 0
+texture = SubResource("GradientTexture1D_v5usu")
+script = ExtResource("10_poe8c")
+main_panel = NodePath(".")
+help_panel = NodePath("../HelpPanel")
+help = NodePath("../../Help")
+Menu = NodePath("..")
 
-[node name="Retry" type="Button" parent="UI/Victoire"]
+[node name="Label" type="Label" parent="UI/Menu/MenuPanel"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -35.3828
-offset_top = -94.335
-offset_right = 14.6172
-offset_bottom = -63.335
+offset_left = -105.5
+offset_top = 31.0
+offset_right = 105.5
+offset_bottom = 76.0
 grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(1.30447, 1.62588)
-text = "Retry"
+text = "DIJKSTRA*"
+label_settings = SubResource("LabelSettings_swlgb")
 
-[node name="Menu" type="Button" parent="UI/Victoire"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Menu/MenuPanel"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -83.3786
-offset_top = -30.9999
-offset_right = 40.6214
-offset_bottom = 6.10352e-05
+anchor_bottom = 0.5
+offset_left = -153.0
+offset_top = -120.204
+offset_right = 153.0
+offset_bottom = 195.796
 grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(1.30447, 1.62588)
+grow_vertical = 2
+theme_override_constants/separation = 64
+
+[node name="Play" type="Button" parent="UI/Menu/MenuPanel/VBoxContainer"]
+layout_mode = 2
+text = "Retour"
+
+[node name="Aide" type="Button" parent="UI/Menu/MenuPanel/VBoxContainer"]
+layout_mode = 2
+text = "Aide"
+
+[node name="Menu" type="Button" parent="UI/Menu/MenuPanel/VBoxContainer"]
+layout_mode = 2
 text = "Menu Principal"
 
-[node name="Defaite" type="TextureRect" parent="UI"]
+[node name="Quitter" type="Button" parent="UI/Menu/MenuPanel/VBoxContainer"]
+layout_mode = 2
+text = "Quitter"
+
+[node name="HelpPanel" type="TextureRect" parent="UI/Menu"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = -231.0
+offset_right = 263.0
+offset_bottom = 215.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.857687, 0.818074)
+mouse_filter = 0
+texture = SubResource("GradientTexture1D_8qsxd")
+
+[node name="Label2" type="Label" parent="UI/Menu/HelpPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.5
+offset_top = 45.0
+offset_right = 48.5
+offset_bottom = 90.0
+grow_horizontal = 2
+text = "Aide"
+label_settings = SubResource("LabelSettings_v5usu")
+vertical_alignment = 1
+
+[node name="BtnRetour" type="Button" parent="UI/Menu/HelpPanel"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = -1.52588e-05
+offset_top = 415.242
+offset_right = 457.67
+offset_bottom = 446.242
+text = "Retour"
+
+[node name="GridContainer" type="GridContainer" parent="UI/Menu/HelpPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.0
+offset_top = -82.0015
+offset_right = 196.0
+offset_bottom = 173.998
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/v_separation = 24
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Menu/HelpPanel/GridContainer"]
+layout_mode = 2
+text = "Le but du jeu est de battre une IA à un quoridor revisité. Il suffit d'arriver du côté de son adversaire pour gagner. À chaque tour, vous avez le choix de soit placer un mur, soit de bouger. Il en est de même pour l'IA."
+fit_content = true
+
+[node name="BoxContainer" type="HBoxContainer" parent="UI/Menu/HelpPanel/GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/Menu/HelpPanel/GridContainer/BoxContainer"]
+layout_mode = 2
+texture = ExtResource("10_o5b5a")
+expand_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Menu/HelpPanel/GridContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="UI/Menu/HelpPanel/GridContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Déplacez vous avec les touches ZQSD"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="UI/Menu/HelpPanel/GridContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Le Player 2 en 1v1 utilise les flèches"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Menu/HelpPanel/GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/Menu/HelpPanel/GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("11_poe8c")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="UI/Menu/HelpPanel/GridContainer/HBoxContainer"]
+layout_mode = 2
+text = "Poser des murs en cliquant sur les cases"
+
+[node name="BoxContainer2" type="HBoxContainer" parent="UI/Menu/HelpPanel/GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/Menu/HelpPanel/GridContainer/BoxContainer2"]
+layout_mode = 2
+texture = ExtResource("12_v5usu")
+expand_mode = 3
+
+[node name="Label2" type="Label" parent="UI/Menu/HelpPanel/GridContainer/BoxContainer2"]
+layout_mode = 2
+text = "Les cases oranges sont des cases de passe tour"
+horizontal_alignment = 1
+
+[node name="Fond" type="TextureRect" parent="UI/Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.5
+offset_top = -324.0
+offset_right = 576.5
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = SubResource("GradientTexture1D_0sqbu")
+
+[node name="Victoire" type="TextureRect" parent="UI/Menu"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -391,78 +544,127 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.674189, 0.445896)
 size_flags_horizontal = 4
+mouse_filter = 0
 
-[node name="Label" type="Label" parent="UI/Defaite"]
-layout_mode = 0
-offset_left = 145.36
-offset_top = 2.24265
-offset_right = 412.36
-offset_bottom = 72.2426
-scale = Vector2(1.44383, 1.73913)
-text = "DEFAITE"
-label_settings = SubResource("LabelSettings_aw23n")
+[node name="Label" type="Label" parent="UI/Menu/Victoire"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -362.232
+offset_top = -71.7656
+offset_right = 16.7677
+offset_bottom = 59.2344
+grow_horizontal = 2
+scale = Vector2(1.90076, 2.51075)
+text = "VICTORY"
+label_settings = SubResource("LabelSettings_hp17q")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
-[node name="Retry" type="Button" parent="UI/Defaite"]
+[node name="Retry" type="Button" parent="UI/Menu/Victoire"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -35.3828
+offset_left = -37.3975
 offset_top = -94.335
-offset_right = 14.6172
+offset_right = 12.6025
 offset_bottom = -63.335
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(1.30447, 1.62588)
 text = "Retry"
 
-[node name="Menu" type="Button" parent="UI/Defaite"]
+[node name="Menu" type="Button" parent="UI/Menu/Victoire"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -83.3786
-offset_top = -30.9999
-offset_right = 40.6214
-offset_bottom = 6.10352e-05
+offset_left = -87.8286
+offset_top = -31.0021
+offset_right = 36.1714
+offset_bottom = -0.00216675
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(1.30447, 1.62588)
 text = "Menu Principal"
 
-[node name="ButtonTitle" type="Label" parent="UI"]
-offset_left = 22.0
-offset_top = 34.0
-offset_right = 127.0
-offset_bottom = 57.0
-text = "Debug"
-metadata/_edit_use_anchors_ = true
+[node name="Defaite" type="TextureRect" parent="UI/Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -227.0
+offset_top = -76.0
+offset_right = 450.0
+offset_bottom = 274.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.674189, 0.445896)
+size_flags_horizontal = 4
+mouse_filter = 0
 
-[node name="Button" type="CheckButton" parent="UI"]
-offset_left = 70.0
-offset_top = 36.0
-offset_right = 114.0
-offset_bottom = 60.0
-button_pressed = true
-metadata/_edit_use_anchors_ = true
+[node name="Label" type="Label" parent="UI/Menu/Defaite"]
+layout_mode = 0
+offset_left = -23.732
+offset_top = -71.766
+offset_right = 355.268
+offset_bottom = 59.234
+scale = Vector2(1.901, 2.289)
+text = "DEFAITE"
+label_settings = SubResource("LabelSettings_aw23n")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
-[node name="TurnLabel" type="Label" parent="UI"]
-offset_left = 22.0
-offset_top = 11.0
-offset_right = 62.0
-offset_bottom = 34.0
-text = "Tour : 1"
+[node name="Retry" type="Button" parent="UI/Menu/Defaite"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -38.3493
+offset_top = -94.335
+offset_right = 11.6507
+offset_bottom = -63.335
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.30447, 1.62588)
+text = "Retry"
 
-[connection signal="pressed" from="UI/MenuPanel/VBoxContainer/Play" to="UI/MenuPanel" method="_on_play_pressed"]
-[connection signal="pressed" from="UI/MenuPanel/VBoxContainer/Aide" to="UI/MenuPanel" method="_on_aide_pressed"]
-[connection signal="pressed" from="UI/MenuPanel/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
-[connection signal="pressed" from="UI/MenuPanel/VBoxContainer/Quitter" to="UI/MenuPanel" method="_on_quitter_pressed"]
-[connection signal="pressed" from="UI/HelpPanel/BtnRetour" to="UI/MenuPanel" method="_on_btn_retour_pressed"]
-[connection signal="pressed" from="UI/Victoire/Retry" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="UI/Victoire/Menu" to="." method="_on_menu_pressed"]
-[connection signal="pressed" from="UI/Defaite/Retry" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="UI/Defaite/Menu" to="." method="_on_menu_pressed"]
+[node name="Menu" type="Button" parent="UI/Menu/Defaite"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -86.3451
+offset_top = -30.9999
+offset_right = 37.6549
+offset_bottom = 0.00012207
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.30447, 1.62588)
+text = "Menu Principal"
+
+[connection signal="pressed" from="UI/Help/BtnRetour" to="UI/Menu/MenuPanel" method="_on_btn_retour_aide_pressed"]
+[connection signal="pressed" from="UI/Button2" to="UI/Menu/MenuPanel" method="_on_help_pressed"]
+[connection signal="pressed" from="UI/Menu/MenuPanel/VBoxContainer/Play" to="UI/Menu/MenuPanel" method="_on_play_pressed"]
+[connection signal="pressed" from="UI/Menu/MenuPanel/VBoxContainer/Aide" to="UI/Menu/MenuPanel" method="_on_aide_pressed"]
+[connection signal="pressed" from="UI/Menu/MenuPanel/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="UI/Menu/MenuPanel/VBoxContainer/Quitter" to="UI/Menu/MenuPanel" method="_on_quitter_pressed"]
+[connection signal="pressed" from="UI/Menu/HelpPanel/BtnRetour" to="UI/Menu/MenuPanel" method="_on_btn_retour_pressed"]
+[connection signal="pressed" from="UI/Menu/Victoire/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="UI/Menu/Victoire/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="UI/Menu/Defaite/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="UI/Menu/Defaite/Menu" to="." method="_on_menu_pressed"]

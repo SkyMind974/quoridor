@@ -1,0 +1,524 @@
+[gd_scene load_steps=28 format=4 uid="uid://bw3kevldii35p"]
+
+[ext_resource type="TileSet" uid="uid://buxa31rpwb4wq" path="res://Map.tres" id="1_bc8hh"]
+[ext_resource type="Script" uid="uid://x3r25swvgkba" path="res://script/board.gd" id="1_h8l20"]
+[ext_resource type="Texture2D" uid="uid://cihrru8bw6wbm" path="res://kenney_isometric-blocks/PNG/Voxel tiles/voxelTile_24.png" id="2_r6dh1"]
+[ext_resource type="Texture2D" uid="uid://72hb8yu7vsdk" path="res://kenney_isometric-blocks/PNG/Abstract tiles/abstractTile_17.png" id="4_hp17q"]
+[ext_resource type="Script" uid="uid://b87v70jn4geys" path="res://script/ia.gd" id="4_incv7"]
+[ext_resource type="Texture2D" uid="uid://bsaq54t5vkl75" path="res://notif.png" id="5_s1xry"]
+[ext_resource type="Script" uid="uid://d0swcefh28u6a" path="res://script/player.gd" id="5_xsp2q"]
+[ext_resource type="FontFile" uid="uid://d1xah8tntvofd" path="res://Walton.otf" id="6_aw23n"]
+[ext_resource type="Texture2D" uid="uid://dgjmvdeo6v50q" path="res://image-removebg-preview (6).png" id="7_v5usu"]
+[ext_resource type="Texture2D" uid="uid://d1aveuwisg1qt" path="res://Menu/clavier.png" id="10_o5b5a"]
+[ext_resource type="Script" uid="uid://c0l0gqe3ry5uh" path="res://Menu/menu_echap.gd" id="10_poe8c"]
+[ext_resource type="Texture2D" uid="uid://yjdur02a7yi1" path="res://kenney_isometric-blocks/PNG/Abstract tiles/abstractTile_09.png" id="11_poe8c"]
+[ext_resource type="Texture2D" uid="uid://xmw0sawrhh8y" path="res://kenney_isometric-blocks/PNG/Voxel tiles/voxelTile_01.png" id="12_v5usu"]
+
+[sub_resource type="Animation" id="Animation_tho86"]
+resource_name = "Arrow"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-1.35, -124.797), Vector2(-1.35, -90), Vector2(-1.35, -124.797)]
+}
+
+[sub_resource type="Animation" id="Animation_jinmt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1.35, -124.797)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jinmt"]
+_data = {
+&"Arrow": SubResource("Animation_tho86"),
+&"RESET": SubResource("Animation_jinmt")
+}
+
+[sub_resource type="Gradient" id="Gradient_8qsxd"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.592157)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v5usu"]
+gradient = SubResource("Gradient_8qsxd")
+
+[sub_resource type="LabelSettings" id="LabelSettings_swlgb"]
+font = ExtResource("6_aw23n")
+font_size = 44
+
+[sub_resource type="Gradient" id="Gradient_v3b0u"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.592157)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8qsxd"]
+gradient = SubResource("Gradient_v3b0u")
+
+[sub_resource type="LabelSettings" id="LabelSettings_v5usu"]
+font = ExtResource("6_aw23n")
+font_size = 44
+
+[sub_resource type="Gradient" id="Gradient_aw23n"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.368627)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0sqbu"]
+gradient = SubResource("Gradient_aw23n")
+
+[sub_resource type="LabelSettings" id="LabelSettings_0sqbu"]
+font = ExtResource("6_aw23n")
+
+[sub_resource type="LabelSettings" id="LabelSettings_hp17q"]
+font = ExtResource("6_aw23n")
+font_size = 40
+font_color = Color(0.760784, 0.6, 0.396078, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_aw23n"]
+font = ExtResource("6_aw23n")
+font_size = 69
+font_color = Color(0.794399, 3.22476e-06, 9.62615e-07, 1)
+
+[node name="Node2D" type="Node2D"]
+process_mode = 3
+position = Vector2(0, -2)
+script = ExtResource("1_h8l20")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1, 414)
+zoom = Vector2(0.5, 0.5)
+
+[node name="TileMap" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="TileMapLayer3" type="TileMapLayer" parent="TileMap"]
+position = Vector2(-53, 11)
+tile_map_data = PackedByteArray("AAABAAIAAwAJAAIAAAABAAMAAwAJAAIAAAABAAQAAwAJAAIAAAABAAUAAwAJAAIAAAABAAYAAwAJAAIAAAABAAcAAwAJAAIAAAABAAgAAwAJAAIAAAABAAkAAwAJAAIAAAABAAoAAwAJAAIAAAABAAsAAwAJAAIAAAABAAwAAwAJAAIAAAABAA0AAwAJAAIAAAACAAIAAwAJAAIAAAACAAMAAwAJAAIAAAACAAQAAwAJAAIAAAACAAUAAwAJAAIAAAACAAYAAwAJAAIAAAACAAcAAwAJAAIAAAACAAgAAwAJAAIAAAACAAkAAwAJAAIAAAACAAoAAwAJAAIAAAACAAsAAwAJAAIAAAACAAwAAwAJAAIAAAACAA0AAwAJAAIAAAADAAIAAwAJAAIAAAADAAMAAwAJAAIAAAADAAQAAwAJAAIAAAADAAUAAwAJAAIAAAADAAYAAwAJAAIAAAADAAcAAwAJAAIAAAADAAgAAwAJAAIAAAADAAkAAwAJAAIAAAADAAoAAwAJAAIAAAADAAsAAwAJAAIAAAADAAwAAwAJAAIAAAADAA0AAwAJAAIAAAAEAAIAAwAJAAIAAAAEAAMAAwAJAAIAAAAEAAQAAwAJAAIAAAAEAAUAAwAJAAIAAAAEAAYAAwAJAAIAAAAEAAcAAwAJAAIAAAAEAAgAAwAJAAIAAAAEAAkAAwAJAAIAAAAEAAoAAwAJAAIAAAAEAAsAAwAJAAIAAAAEAAwAAwAJAAIAAAAEAA0AAwAJAAIAAAAFAAIAAwAJAAIAAAAFAAMAAwAJAAIAAAAFAAQAAwAJAAIAAAAFAAUAAwAJAAIAAAAFAAYAAwAJAAIAAAAFAAcAAwAJAAIAAAAFAAgAAwAJAAIAAAAFAAkAAwAJAAIAAAAFAAoAAwAJAAIAAAAFAAsAAwAJAAIAAAAFAAwAAwAJAAIAAAAFAA0AAwAJAAIAAAAGAAIAAwAJAAIAAAAGAAMAAwAJAAIAAAAGAAQAAwAJAAIAAAAGAAUAAwAJAAIAAAAGAAYAAwAJAAIAAAAGAAcAAwAJAAIAAAAGAAgAAwAJAAIAAAAGAAkAAwAJAAIAAAAGAAoAAwAJAAIAAAAGAAsAAwAJAAIAAAAGAAwAAwAJAAIAAAAGAA0AAwAJAAIAAAAHAAIAAwAJAAIAAAAHAAMAAwAJAAIAAAAHAAQAAwAJAAIAAAAHAAUAAwAJAAIAAAAHAAYAAwAJAAIAAAAHAAcAAwAJAAIAAAAHAAgAAwAJAAIAAAAHAAkAAwAJAAIAAAAHAAoAAwAJAAIAAAAHAAsAAwAJAAIAAAAHAAwAAwAJAAIAAAAHAA0AAwAJAAIAAAAIAAIAAwAJAAIAAAAIAAMAAwAJAAIAAAAIAAQAAwAJAAIAAAAIAAUAAwAJAAIAAAAIAAYAAwAJAAIAAAAIAAcAAwAJAAIAAAAIAAgAAwAJAAIAAAAIAAkAAwAJAAIAAAAIAAoAAwAJAAIAAAAIAAsAAwAJAAIAAAAIAAwAAwAJAAIAAAAIAA0AAwAJAAIAAAAJAAIAAwAJAAIAAAAJAAMAAwAJAAIAAAAJAAQAAwAJAAIAAAAJAAUAAwAJAAIAAAAJAAYAAwAJAAIAAAAJAAcAAwAJAAIAAAAJAAgAAwAJAAIAAAAJAAkAAwAJAAIAAAAJAAoAAwAJAAIAAAAJAAsAAwAJAAIAAAAJAAwAAwAJAAIAAAAJAA0AAwAJAAIAAAAKAAIAAwAJAAIAAAAKAAMAAwAJAAIAAAAKAAQAAwAJAAIAAAAKAAUAAwAJAAIAAAAKAAYAAwAJAAIAAAAKAAcAAwAJAAIAAAAKAAgAAwAJAAIAAAAKAAkAAwAJAAIAAAAKAAoAAwAJAAIAAAAKAAsAAwAJAAIAAAAKAAwAAwAJAAIAAAAKAA0AAwAJAAIAAAALAAIAAwAJAAIAAAALAAMAAwAJAAIAAAALAAQAAwAJAAIAAAALAAUAAwAJAAIAAAALAAYAAwAJAAIAAAALAAcAAwAJAAIAAAALAAgAAwAJAAIAAAALAAkAAwAJAAIAAAALAAoAAwAJAAIAAAALAAsAAwAJAAIAAAALAAwAAwAJAAIAAAALAA0AAwAJAAIAAAAMAAIAAwAJAAIAAAAMAAMAAwAJAAIAAAAMAAQAAwAJAAIAAAAMAAUAAwAJAAIAAAAMAAYAAwAJAAIAAAAMAAcAAwAJAAIAAAAMAAgAAwAJAAIAAAAMAAkAAwAJAAIAAAAMAAoAAwAJAAIAAAAMAAsAAwAJAAIAAAAMAAwAAwAJAAIAAAAMAA0AAwAJAAIAAAABAAEAAwAJAAIAAAACAAEAAwAJAAIAAAADAAEAAwAJAAIAAAAEAAEAAwAJAAIAAAAFAAEAAwAJAAIAAAAGAAEAAwAJAAIAAAAHAAEAAwAJAAIAAAAIAAEAAwAJAAIAAAAJAAEAAwAJAAIAAAAKAAEAAwAJAAIAAAALAAEAAwAJAAIAAAAMAAEAAwAJAAIAAAANAAEAAwAJAAIAAAANAAIAAwAJAAIAAAANAAMAAwAJAAIAAAANAAQAAwAJAAIAAAANAAUAAwAJAAIAAAANAAYAAwAJAAIAAAANAAcAAwAJAAIAAAANAAgAAwAJAAIAAAANAAkAAwAJAAIAAAANAAoAAwAJAAIAAAANAAsAAwAJAAIAAAANAAwAAwAJAAIAAAANAA0AAwAJAAIAAAA=")
+tile_set = ExtResource("1_bc8hh")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="TileMap"]
+position = Vector2(-53, 11)
+tile_map_data = PackedByteArray("AAAAAAEAAwAIAAIAAAAAAAIAAwAIAAIAAAAAAAMAAwAIAAIAAAAAAAQAAwAIAAIAAAAAAAUAAwAIAAIAAAAAAAYAAwAJAAIAAAAAAAcAAwAHAAIAAAAAAAgAAwAHAAIAAAAAAAkAAwAHAAIAAAAAAAoAAwAHAAIAAAAAAAsAAwAHAAIAAAAAAAwAAwAKAAUAAAABAAEAAwAIAAIAAAABAAIAAwAIAAIAAAABAAMAAwAIAAIAAAABAAQAAwAIAAIAAAABAAUAAwAIAAIAAAABAAYAAwAJAAIAAAABAAcAAwAHAAIAAAABAAgAAwAHAAIAAAABAAkAAwAHAAIAAAABAAoAAwAHAAIAAAABAAsAAwAHAAIAAAABAAwAAwAKAAUAAAACAAEAAwAIAAIAAAACAAIAAwAIAAIAAAACAAMAAwAIAAIAAAACAAQAAwAIAAIAAAACAAUAAwAIAAIAAAACAAYAAwAJAAIAAAACAAcAAwAHAAIAAAACAAgAAwAHAAIAAAACAAkAAwAHAAIAAAACAAoAAwAHAAIAAAACAAsAAwAHAAIAAAACAAwAAwAKAAUAAAADAAEAAwAIAAIAAAADAAIAAwAIAAIAAAADAAMAAwAIAAIAAAADAAQAAwAIAAIAAAADAAUAAwAIAAIAAAADAAYAAwAJAAIAAAADAAcAAwAHAAIAAAADAAgAAwAHAAIAAAADAAkAAwAHAAIAAAADAAsAAwAHAAIAAAADAAwAAwAKAAUAAAAEAAEAAwAIAAIAAAAEAAIAAwAIAAIAAAAEAAMAAwAIAAIAAAAEAAQAAwAIAAIAAAAEAAUAAwAIAAIAAAAEAAYAAwAJAAIAAAAEAAcAAwAHAAIAAAAEAAgAAwAHAAIAAAAEAAkAAwAHAAIAAAAEAAoAAwAHAAIAAAAEAAsAAwAHAAIAAAAEAAwAAwAKAAUAAAAFAAEAAwAIAAIAAAAFAAIAAwAIAAIAAAAFAAMAAwAIAAIAAAAFAAQAAwAIAAIAAAAFAAUAAwAIAAIAAAAFAAYAAwAJAAIAAAAFAAcAAwAHAAIAAAAFAAgAAwAHAAIAAAAFAAkAAwAHAAIAAAAFAAoAAwAHAAIAAAAFAAsAAwAHAAIAAAAFAAwAAwAKAAUAAAAGAAEAAwAIAAIAAAAGAAIAAwAIAAIAAAAGAAMAAwAIAAIAAAAGAAQAAwAIAAIAAAAGAAUAAwAIAAIAAAAGAAYAAwAJAAIAAAAGAAcAAwAHAAIAAAAGAAgAAwAHAAIAAAAGAAkAAwAHAAIAAAAGAAoAAwAHAAIAAAAGAAsAAwAHAAIAAAAGAAwAAwAKAAUAAAAHAAEAAwAIAAIAAAAHAAIAAwAIAAIAAAAHAAMAAwAIAAIAAAAHAAQAAwAIAAIAAAAHAAUAAwAIAAIAAAAHAAYAAwAJAAIAAAAHAAcAAwAHAAIAAAAHAAgAAwAHAAIAAAAHAAkAAwAHAAIAAAAHAAoAAwAHAAIAAAAHAAsAAwAHAAIAAAAHAAwAAwAKAAUAAAAIAAEAAwAIAAIAAAAIAAIAAwAIAAIAAAAIAAMAAwAIAAIAAAAIAAQAAwAIAAIAAAAIAAUAAwAIAAIAAAAIAAYAAwAJAAIAAAAIAAcAAwAHAAIAAAAIAAgAAwAHAAIAAAAIAAkAAwAHAAIAAAAIAAoAAwAHAAIAAAAIAAsAAwAHAAIAAAAIAAwAAwAKAAUAAAAJAAEAAwAIAAIAAAAJAAIAAwAIAAIAAAAJAAMAAwAIAAIAAAAJAAQAAwAIAAIAAAAJAAUAAwAIAAIAAAAJAAYAAwAJAAIAAAAJAAcAAwAHAAIAAAAJAAgAAwAHAAIAAAAJAAkAAwAHAAIAAAAJAAoAAwAHAAIAAAAJAAsAAwAHAAIAAAAJAAwAAwAKAAUAAAAKAAEAAwAIAAIAAAAKAAIAAwAIAAIAAAAKAAMAAwAIAAIAAAAKAAQAAwAIAAIAAAAKAAUAAwAIAAIAAAAKAAYAAwAJAAIAAAAKAAcAAwAHAAIAAAAKAAgAAwAHAAIAAAAKAAkAAwAHAAIAAAAKAAoAAwAHAAIAAAAKAAsAAwAHAAIAAAAKAAwAAwAKAAUAAAAEAAAAAwALAAUAAAAFAAAAAwALAAUAAAAGAAAAAwALAAUAAAAHAAAAAwALAAUAAAAIAAAAAwALAAUAAAAJAAAAAwALAAUAAAAKAAAAAwALAAUAAAAMAAAAAwALAAUAAAAMAAEAAwAIAAIAAAAMAAIAAwAIAAIAAAAMAAMAAwAIAAIAAAAMAAQAAwAIAAIAAAAMAAUAAwAIAAIAAAAMAAYAAwAJAAIAAAAMAAcAAwAHAAIAAAAMAAgAAwAHAAIAAAAMAAkAAwAHAAIAAAAMAAoAAwAHAAIAAAAMAAsAAwAHAAIAAAAMAAwAAwAKAAUAAAALAAAAAwALAAUAAAALAAEAAwAIAAIAAAALAAIAAwAIAAIAAAALAAMAAwAIAAIAAAALAAQAAwAIAAIAAAALAAUAAwAIAAIAAAALAAYAAwAJAAIAAAALAAcAAwAHAAIAAAALAAgAAwAHAAIAAAALAAkAAwAHAAIAAAALAAoAAwAHAAIAAAALAAsAAwAHAAIAAAALAAwAAwAKAAUAAAADAAoAAwAHAAIAAAAAAAAAAwALAAUAAAABAAAAAwALAAUAAAACAAAAAwALAAUAAAADAAAAAwALAAUAAAA=")
+tile_set = ExtResource("1_bc8hh")
+
+[node name="Stun" type="Node2D" parent="TileMap"]
+
+[node name="Debug" type="Node2D" parent="TileMap"]
+y_sort_enabled = true
+
+[node name="Walls" type="Node2D" parent="TileMap"]
+y_sort_enabled = true
+
+[node name="IA" type="Sprite2D" parent="TileMap"]
+y_sort_enabled = true
+position = Vector2(336, 229)
+scale = Vector2(0.70045, 0.644531)
+texture = ExtResource("4_hp17q")
+offset = Vector2(0, -25.285)
+script = ExtResource("4_incv7")
+board_path = NodePath("../..")
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/IA"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-1.35, -124.797)
+rotation = 1.57079
+scale = Vector2(0.323619, 0.323619)
+texture = ExtResource("7_v5usu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TileMap/IA"]
+libraries = {
+&"": SubResource("AnimationLibrary_jinmt")
+}
+
+[node name="Player" type="Sprite2D" parent="TileMap"]
+y_sort_enabled = true
+position = Vector2(-330, 615)
+scale = Vector2(0.741, 0.645)
+texture = ExtResource("2_r6dh1")
+offset = Vector2(0, -25.285)
+script = ExtResource("5_xsp2q")
+board_path = NodePath("../..")
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/Player"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-1.35, -124.797)
+rotation = 1.57079
+scale = Vector2(0.323619, 0.323619)
+texture = ExtResource("7_v5usu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TileMap/Player"]
+libraries = {
+&"": SubResource("AnimationLibrary_jinmt")
+}
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="MenuPanel" type="TextureRect" parent="UI" node_paths=PackedStringArray("main_panel", "help_panel")]
+visible = false
+z_index = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -198.0
+offset_top = 93.0
+offset_right = 260.0
+offset_bottom = 539.0
+grow_horizontal = 2
+scale = Vector2(0.863031, 0.817149)
+texture = SubResource("GradientTexture1D_v5usu")
+script = ExtResource("10_poe8c")
+main_panel = NodePath(".")
+help_panel = NodePath("../HelpPanel")
+
+[node name="Label" type="Label" parent="UI/MenuPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -105.5
+offset_top = 31.0
+offset_right = 105.5
+offset_bottom = 76.0
+grow_horizontal = 2
+text = "DIJKSTRA*"
+label_settings = SubResource("LabelSettings_swlgb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MenuPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.0
+offset_top = -120.204
+offset_right = 153.0
+offset_bottom = 195.796
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 64
+
+[node name="Play" type="Button" parent="UI/MenuPanel/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="Aide" type="Button" parent="UI/MenuPanel/VBoxContainer"]
+layout_mode = 2
+text = "Aide"
+
+[node name="Menu" type="Button" parent="UI/MenuPanel/VBoxContainer"]
+layout_mode = 2
+text = "Menu Principal"
+
+[node name="Quitter" type="Button" parent="UI/MenuPanel/VBoxContainer"]
+layout_mode = 2
+text = "Quitter"
+
+[node name="HelpPanel" type="TextureRect" parent="UI"]
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = -231.0
+offset_right = 260.0
+offset_bottom = 215.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.857687, 0.818074)
+texture = SubResource("GradientTexture1D_8qsxd")
+
+[node name="Label2" type="Label" parent="UI/HelpPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.5
+offset_top = 45.0
+offset_right = 48.5
+offset_bottom = 90.0
+grow_horizontal = 2
+text = "Aide"
+label_settings = SubResource("LabelSettings_v5usu")
+vertical_alignment = 1
+
+[node name="BtnRetour" type="Button" parent="UI/HelpPanel"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = -1.52588e-05
+offset_top = 415.242
+offset_right = 457.67
+offset_bottom = 446.242
+text = "Retour"
+
+[node name="GridContainer" type="GridContainer" parent="UI/HelpPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.0
+offset_top = -82.0015
+offset_right = 196.0
+offset_bottom = 173.998
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/v_separation = 24
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/HelpPanel/GridContainer"]
+layout_mode = 2
+text = "Le but du jeu est de battre une IA à un quoridor revisité. Il suffit d'arriver du côté de son adversaire pour gagner. À chaque tour, vous avez le choix de soit placer un mur, soit de bouger. Il en est de même pour l'IA."
+fit_content = true
+
+[node name="BoxContainer" type="HBoxContainer" parent="UI/HelpPanel/GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/HelpPanel/GridContainer/BoxContainer"]
+layout_mode = 2
+texture = ExtResource("10_o5b5a")
+expand_mode = 3
+
+[node name="Label2" type="Label" parent="UI/HelpPanel/GridContainer/BoxContainer"]
+layout_mode = 2
+text = "Déplacer vous avec les flèches directionnelles"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HelpPanel/GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/HelpPanel/GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("11_poe8c")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="UI/HelpPanel/GridContainer/HBoxContainer"]
+layout_mode = 2
+text = "Poser des murs en cliquant sur les cases"
+
+[node name="BoxContainer2" type="HBoxContainer" parent="UI/HelpPanel/GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/HelpPanel/GridContainer/BoxContainer2"]
+layout_mode = 2
+texture = ExtResource("12_v5usu")
+expand_mode = 3
+
+[node name="Label2" type="Label" parent="UI/HelpPanel/GridContainer/BoxContainer2"]
+layout_mode = 2
+text = "Les cases oranges sont des cases de passe tour"
+horizontal_alignment = 1
+
+[node name="Fond" type="TextureRect" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.5
+offset_top = -324.0
+offset_right = 576.5
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = SubResource("GradientTexture1D_0sqbu")
+
+[node name="TextureRect" type="TextureRect" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -148.0
+offset_top = 49.0
+offset_right = 146.0
+offset_bottom = 113.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_s1xry")
+
+[node name="Label" type="Label" parent="UI/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Test"
+label_settings = SubResource("LabelSettings_0sqbu")
+
+[node name="Victoire" type="TextureRect" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -227.0
+offset_top = -76.0
+offset_right = 450.0
+offset_bottom = 274.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.674189, 0.445896)
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="UI/Victoire"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -163.475
+offset_top = 9.0
+offset_right = 0.525085
+offset_bottom = 50.0
+grow_horizontal = 2
+scale = Vector2(1.90076, 2.51075)
+text = "VICTORY"
+label_settings = SubResource("LabelSettings_hp17q")
+autowrap_mode = 2
+
+[node name="Retry" type="Button" parent="UI/Victoire"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.3828
+offset_top = -94.335
+offset_right = 14.6172
+offset_bottom = -63.335
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.30447, 1.62588)
+text = "Retry"
+
+[node name="Menu" type="Button" parent="UI/Victoire"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -83.3786
+offset_top = -30.9999
+offset_right = 40.6214
+offset_bottom = 6.10352e-05
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.30447, 1.62588)
+text = "Menu Principal"
+
+[node name="Defaite" type="TextureRect" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -227.0
+offset_top = -76.0
+offset_right = 450.0
+offset_bottom = 274.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.674189, 0.445896)
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="UI/Defaite"]
+layout_mode = 0
+offset_left = 145.36
+offset_top = 2.24265
+offset_right = 412.36
+offset_bottom = 72.2426
+scale = Vector2(1.44383, 1.73913)
+text = "DEFAITE"
+label_settings = SubResource("LabelSettings_aw23n")
+autowrap_mode = 2
+
+[node name="Retry" type="Button" parent="UI/Defaite"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.3828
+offset_top = -94.335
+offset_right = 14.6172
+offset_bottom = -63.335
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.30447, 1.62588)
+text = "Retry"
+
+[node name="Menu" type="Button" parent="UI/Defaite"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -83.3786
+offset_top = -30.9999
+offset_right = 40.6214
+offset_bottom = 6.10352e-05
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.30447, 1.62588)
+text = "Menu Principal"
+
+[node name="ButtonTitle" type="Label" parent="UI"]
+offset_left = 22.0
+offset_top = 34.0
+offset_right = 127.0
+offset_bottom = 57.0
+text = "Debug"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="CheckButton" parent="UI"]
+offset_left = 70.0
+offset_top = 36.0
+offset_right = 114.0
+offset_bottom = 60.0
+button_pressed = true
+metadata/_edit_use_anchors_ = true
+
+[node name="TurnLabel" type="Label" parent="UI"]
+offset_left = 22.0
+offset_top = 11.0
+offset_right = 62.0
+offset_bottom = 34.0
+text = "Tour : 1"
+
+[connection signal="pressed" from="UI/MenuPanel/VBoxContainer/Play" to="UI/MenuPanel" method="_on_play_pressed"]
+[connection signal="pressed" from="UI/MenuPanel/VBoxContainer/Aide" to="UI/MenuPanel" method="_on_aide_pressed"]
+[connection signal="pressed" from="UI/MenuPanel/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="UI/MenuPanel/VBoxContainer/Quitter" to="UI/MenuPanel" method="_on_quitter_pressed"]
+[connection signal="pressed" from="UI/HelpPanel/BtnRetour" to="UI/MenuPanel" method="_on_btn_retour_pressed"]
+[connection signal="pressed" from="UI/Victoire/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="UI/Victoire/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="UI/Defaite/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="UI/Defaite/Menu" to="." method="_on_menu_pressed"]

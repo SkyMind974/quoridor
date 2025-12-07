@@ -2,12 +2,11 @@ extends Node2D
 
 @export var game_scene: PackedScene
 
-@onready var main_panel: TextureRect 
-@onready var title_label: Label 
-@onready var main_menu: VBoxContainer 
-@onready var mode_panel: TextureRect 
-@onready var help_panel: TextureRect 
-
+@onready var main_panel: TextureRect = $MainPanel
+@onready var title_label: Label = $MainPanel/Title
+@onready var main_menu: VBoxContainer = $MainPanel/MenuVBox
+@onready var mode_panel: TextureRect = $ModePanel
+@onready var help_panel: TextureRect = $HelpPanel
 
 
 func _ready() -> void:
@@ -31,7 +30,6 @@ func _on_aide_pressed() -> void:
 
 func _on_quitter_pressed() -> void:
 	get_tree().quit()
-
 
 
 func _on_btn_retour_pressed() -> void:

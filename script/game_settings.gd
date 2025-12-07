@@ -1,4 +1,14 @@
 extends Node
 
-enum Algo { DIJKSTRA, ASTAR }
-var algo_mode: Algo = Algo.DIJKSTRA
+enum Algo {
+	ASTAR,
+	DIJKSTRA
+}
+
+enum Mode {
+	VS_IA,
+	MULTI
+}
+
+var algo_mode: Algo = Algo.ASTAR
+var game_mode: Mode = Mode.VS_IA
