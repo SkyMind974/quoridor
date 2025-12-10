@@ -127,7 +127,9 @@ activation de la flèche animée.
 ia.gd
 
 En VS IA : logique du tour IA (chemin, pose mur, déplacement).
-En 1v1 : gestion des entrées du Joueur 2 (flèches + murs).-
+
+En 1v1 : gestion des entrées du Joueur 2 (flèches + murs).
+
 Gère aussi la flèche animée au-dessus du pion bleu.
 
 game_settings.gd (autoload)
