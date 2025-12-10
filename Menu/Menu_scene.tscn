@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://5kyvj1u6qni7" path="res://script/menuwalk.gd" id="5_wnh5h"]
 [ext_resource type="Script" uid="uid://cpk25lwg7h1lm" path="res://Menu/menu_panel.gd" id="6_fmc12"]
 [ext_resource type="Texture2D" uid="uid://cihrru8bw6wbm" path="res://kenney_isometric-blocks/PNG/Voxel tiles/voxelTile_24.png" id="6_jcuqc"]
-[ext_resource type="FontFile" uid="uid://d1xah8tntvofd" path="res://Walton.otf" id="7_bo1wi"]
+[ext_resource type="FontFile" uid="uid://d1xah8tntvofd" path="res://font/Walton.otf" id="7_bo1wi"]
 [ext_resource type="Texture2D" uid="uid://d1aveuwisg1qt" path="res://Menu/clavier.png" id="8_ltt11"]
 [ext_resource type="Texture2D" uid="uid://yjdur02a7yi1" path="res://kenney_isometric-blocks/PNG/Abstract tiles/abstractTile_09.png" id="9_obx4k"]
 [ext_resource type="Texture2D" uid="uid://xmw0sawrhh8y" path="res://kenney_isometric-blocks/PNG/Voxel tiles/voxelTile_01.png" id="10_v3b0u"]

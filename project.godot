@@ -13,14 +13,19 @@ config_version=5
 config/name="IA_A*_Dijkstra"
 run/main_scene="uid://d0ntdpb3g7f5f"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://image/icon.svg"
 
 [autoload]
 
 GameSettings="*res://script/game_settings.gd"
+MusicManager="*res://MusicManager.tscn"
 
 [display]
 
 window/size/mode=4
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor]
+
+movie_writer/movie_file="C:/Users/SkyMi/OFFmaillage/quoridor/QuoridorIA.avi"

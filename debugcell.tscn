@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dqvuhxbek43wd"]
 
-[ext_resource type="FontFile" uid="uid://d1xah8tntvofd" path="res://Walton.otf" id="1_d63r8"]
+[ext_resource type="FontFile" uid="uid://d1xah8tntvofd" path="res://font/Walton.otf" id="1_d63r8"]
 [ext_resource type="TileSet" uid="uid://buxa31rpwb4wq" path="res://Map.tres" id="1_xj0oy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xj0oy"]

@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://d1xah8tntvofd"
-path="res://.godot/imported/Walton.otf-6472e14cd4f46c9cbe86d521eb9ce278.fontdata"
+uid="uid://51pjlcd571xr"
+path="res://.godot/imported/Cricket-aYy9E.otf-494871ce960c09e495b8b156119aab6e.fontdata"
 
 [deps]
 
-source_file="res://Walton.otf"
-dest_files=["res://.godot/imported/Walton.otf-6472e14cd4f46c9cbe86d521eb9ce278.fontdata"]
+source_file="res://font/Cricket-aYy9E.otf"
+dest_files=["res://.godot/imported/Cricket-aYy9E.otf-494871ce960c09e495b8b156119aab6e.fontdata"]
 
 [params]
 

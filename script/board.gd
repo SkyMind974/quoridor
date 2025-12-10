@@ -88,7 +88,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if not game_over:
 			_toggle_pause()
 func _toggle_pause() -> void:
-	if Menu.visible:
+	if Menu.visible or help.visible:
 		get_tree().paused = false
 		pause_menu.visible = false
 		help_menu.visible = false
@@ -432,8 +432,6 @@ func _start_turn() -> void:
 			current_turn = Turn.AI
 			update_turn_indicator()
 			return _start_turn()  # On lance le tour de l'IA
-
-		# Joueur NON stun → il peut jouer
 		return
 
 	if current_turn == Turn.AI:
@@ -449,7 +447,7 @@ func _start_turn() -> void:
 			update_turn_indicator()
 			return _start_turn()  # On renvoie la main au joueur
 
-		# IA NON stun → elle joue normalement
+		# IA NON stun 
 		ai_node.play_turn()
 
 func end_ai_turn() -> void:
@@ -550,8 +548,11 @@ func request_ai_move(dir: Vector2i) -> void:
 		_update_positions()
 
 		var idx: Vector2i = _index(ai_cell)
+		
+		# On stun l'IA
 		if costs[idx.y][idx.x] > 1:
 			ai_stunned = true
+
 		end_ai_turn()
 
 

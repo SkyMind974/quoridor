@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv1jnc2i4sv2x"
-path="res://.godot/imported/victoire.png-dcd946bcde18c968e17e71a796a5352c.ctex"
+uid="uid://dgjmvdeo6v50q"
+path="res://.godot/imported/arrow.png-c5d4aeafa5e83d479b16c85659c2845e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://victoire.png"
-dest_files=["res://.godot/imported/victoire.png-dcd946bcde18c968e17e71a796a5352c.ctex"]
+source_file="res://image/arrow.png"
+dest_files=["res://.godot/imported/arrow.png-c5d4aeafa5e83d479b16c85659c2845e.ctex"]
 
 [params]
 
