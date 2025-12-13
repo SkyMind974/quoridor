@@ -18,7 +18,6 @@ config/icon="res://image/icon.svg"
 [autoload]
 
 GameSettings="*res://script/game_settings.gd"
-MusicManager="*res://MusicManager.tscn"
 
 [display]
 
@@ -29,3 +28,8 @@ window/stretch/aspect="expand"
 [editor]
 
 movie_writer/movie_file="C:/Users/SkyMi/OFFmaillage/quoridor/QuoridorIA.avi"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
